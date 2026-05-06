@@ -1,0 +1,82 @@
+# Roadmap: Cordy's Crafts
+
+## Overview
+
+Migrate the existing Claude Design CDN prototype into a production-ready Vite 5 + React + Supabase SPA, deployed on Vercel. The journey runs in four phases: scaffold the buildable project (preserving all existing components), wire live Supabase data and WhatsApp order capture, polish the mobile layout and SEO, then verify and ship to production.
+
+## Phases
+
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Vite Scaffold** - Migrate the CDN prototype into a buildable Vite 5 + React project without rewriting any components
+- [ ] **Phase 2: Supabase Integration** - Wire live data, write orders/bookings to Supabase before WhatsApp link opens, enable RLS
+- [ ] **Phase 3: Mobile Polish** - Responsive grid layouts, loading skeletons, and SEO/OG meta tags
+- [ ] **Phase 4: Vercel Deploy** - Connect GitHub to Vercel, set env vars, verify production, write setup docs
+
+## Phase Details
+
+### Phase 1: Vite Scaffold
+**Goal**: The CDN prototype runs as a proper Vite 5 + React build — all Claude Design components imported as ES modules, CartContext replacing window globals, and vercel.json committed
+**Depends on**: Nothing (first phase)
+**Requirements**: SCAF-01, SCAF-02, SCAF-03, SCAF-04, SCAF-05, SCAF-06
+**Success Criteria** (what must be TRUE):
+  1. `npm run dev` starts without errors and the full prototype UI renders in the browser
+  2. All four Claude Design files (primitives.jsx, hero.jsx, products.jsx, sections.jsx) load as ES modules with zero component rewrites
+  3. Cart add/remove/quantity operations work using CartContext — no window.cart, window.openCart, or window.cartCount globals remain
+  4. Missing any of the three env vars causes the app to throw a loud startup error listing the missing variable(s)
+  5. `vercel.json` with SPA rewrite rule is present in the repository root
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 2: Supabase Integration
+**Goal**: Products and classes load live from Supabase; every order and booking is persisted to the database before the WhatsApp message opens; RLS locks down the tables
+**Depends on**: Phase 1
+**Requirements**: SUPA-01, SUPA-02, SUPA-03, SUPA-04, SUPA-05, SUPA-06, WA-01, WA-02, WA-03
+**Success Criteria** (what must be TRUE):
+  1. Products and classes render from Supabase rows — adding a row in the Supabase table editor makes it appear on the page on next load
+  2. Submitting the cart checkout form writes an `orders` row (with payment_status='pending') to Supabase, then opens the pre-filled wa.me link — the WhatsApp link never opens if the Supabase write fails
+  3. Submitting the class booking form writes a `bookings` row (with payment_status='pending') to Supabase, then opens the pre-filled wa.me link — same guard as above
+  4. The WhatsApp message includes item names, quantities, ₹ totals, and customer name for orders; class name, date/time, seats, mode, and customer name for bookings — number is always from VITE_WHATSAPP_NUMBER
+  5. An unauthenticated anon client can INSERT to orders and bookings but cannot SELECT, UPDATE, or DELETE any row
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 3: Mobile Polish
+**Goal**: The site is genuinely usable on a phone — responsive grids, visible loading states, and correct meta tags for search and social sharing
+**Depends on**: Phase 2
+**Requirements**: PLSH-01, PLSH-02, PLSH-03, PLSH-04, PLSH-05, PLSH-06
+**Success Criteria** (what must be TRUE):
+  1. On a 375px-wide viewport the product grid shows 2 columns; at 768px it shows 3; at 1280px it shows 4
+  2. On a 375px-wide viewport the classes grid shows 1 column; at 768px and above it shows 2
+  3. While products are loading from Supabase, skeleton cards are visible in place of real cards (no blank white space or layout shift)
+  4. While classes are loading from Supabase, skeleton cards are visible in place of real cards
+  5. Each page has a distinct `<title>` and `<meta name="description">`, and the home page has og:title, og:description, and og:image tags
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 4: Vercel Deploy
+**Goal**: The site is live on a Vercel URL, auto-deploys from main, all env vars are set in Vercel, and a developer can set up the project locally from the README
+**Depends on**: Phase 3
+**Requirements**: DEPL-01, DEPL-02, DEPL-03, DEPL-04
+**Success Criteria** (what must be TRUE):
+  1. Pushing a commit to main triggers an automatic Vercel deployment with no manual steps
+  2. Navigating directly to a deep route (e.g., /products) in the browser returns the app, not a 404
+  3. On the production URL: cart persists across page refresh, and WhatsApp order and booking links open correctly on an Android device and an iOS device
+  4. A new developer can clone the repo, follow README instructions, and run the site locally without asking Cordeelia for anything beyond the env var values
+**Plans**: TBD
+
+## Progress
+
+**Execution Order:**
+Phases execute in numeric order: 1 → 2 → 3 → 4
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Vite Scaffold | 0/? | Not started | - |
+| 2. Supabase Integration | 0/? | Not started | - |
+| 3. Mobile Polish | 0/? | Not started | - |
+| 4. Vercel Deploy | 0/? | Not started | - |
