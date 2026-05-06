@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  <ellipse cx="200" cy="335" rx="90" ry="10" fill="#f5c0c0" opacity="0.6"></ellipse>
+  <g transform="translate(110 130)">
+    <ellipse cx="90" cy="180" rx="90" ry="14" fill="#a85050"></ellipse>
+    <rect x="0" y="20" width="180" height="160" fill="#e07070"></rect>
+    <ellipse cx="90" cy="20" rx="90" ry="14" fill="#f08a8a"></ellipse>
+    <ellipse cx="90" cy="20" rx="80" ry="10" fill="#fff5f5"></ellipse>
+    <line x1="90" y1="10" x2="90" y2="20" stroke="#3a2a2a" stroke-width="2"></line>
+    <rect x="30" y="60" width="120" height="80" fill="#fff5f5" stroke="#a85050" stroke-width="1"></rect>
+    <text x="90" y="92" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" fill="#a85050">Lavender</text>
+    <text x="90" y="115" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#a85050" letter-spacing="2">TRAVEL · 4oz</text>
+  </g>
+  
+  <g transform="translate(280 230) rotate(20)">
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#9aad96" stroke-width="2"></line>
+    <ellipse cx="-4" cy="0" rx="3" ry="5" fill="#b6a7c4"></ellipse><ellipse cx="4" cy="8" rx="3" ry="5" fill="#b6a7c4"></ellipse><ellipse cx="-4" cy="16" rx="3" ry="5" fill="#b6a7c4"></ellipse><ellipse cx="4" cy="24" rx="3" ry="5" fill="#b6a7c4"></ellipse><ellipse cx="-4" cy="32" rx="3" ry="5" fill="#b6a7c4"></ellipse><ellipse cx="4" cy="40" rx="3" ry="5" fill="#b6a7c4"></ellipse>
+  </g>
+
+</svg>

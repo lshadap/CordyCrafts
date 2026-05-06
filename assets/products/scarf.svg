@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  
+  <line x1="160" y1="60" x2="160" y2="160" stroke="#a85050" stroke-width="1"></line>
+  <line x1="240" y1="60" x2="240" y2="160" stroke="#a85050" stroke-width="1"></line>
+  
+  <g transform="translate(160 180)">
+    <circle cx="0" cy="-22" r="4" fill="#a85050"></circle>
+    
+    <ellipse cx="22" cy="0" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(0 0 0) translate(0 22)"></ellipse><ellipse cx="15.556349186104047" cy="15.556349186104043" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(45 0 0) translate(0 22)"></ellipse><ellipse cx="1.3471114790620886e-15" cy="22" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(90 0 0) translate(0 22)"></ellipse><ellipse cx="-15.556349186104043" cy="15.556349186104047" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(135 0 0) translate(0 22)"></ellipse><ellipse cx="-22" cy="2.6942229581241772e-15" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(180 0 0) translate(0 22)"></ellipse><ellipse cx="-15.556349186104049" cy="-15.556349186104043" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(225 0 0) translate(0 22)"></ellipse><ellipse cx="-4.0413344371862654e-15" cy="-22" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(270 0 0) translate(0 22)"></ellipse><ellipse cx="15.556349186104041" cy="-15.556349186104049" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(315 0 0) translate(0 22)"></ellipse>
+    <circle cx="0" cy="0" r="12" fill="#f08a8a"></circle>
+    <circle cx="-3" cy="-3" r="3" fill="#fff5f5" opacity="0.6"></circle>
+  </g>
+  
+  <g transform="translate(240 180)">
+    <circle cx="0" cy="-22" r="4" fill="#a85050"></circle>
+    <ellipse cx="22" cy="0" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(0 0 0) translate(0 22)"></ellipse><ellipse cx="15.556349186104047" cy="15.556349186104043" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(45 0 0) translate(0 22)"></ellipse><ellipse cx="1.3471114790620886e-15" cy="22" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(90 0 0) translate(0 22)"></ellipse><ellipse cx="-15.556349186104043" cy="15.556349186104047" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(135 0 0) translate(0 22)"></ellipse><ellipse cx="-22" cy="2.6942229581241772e-15" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(180 0 0) translate(0 22)"></ellipse><ellipse cx="-15.556349186104049" cy="-15.556349186104043" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(225 0 0) translate(0 22)"></ellipse><ellipse cx="-4.0413344371862654e-15" cy="-22" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(270 0 0) translate(0 22)"></ellipse><ellipse cx="15.556349186104041" cy="-15.556349186104049" rx="9" ry="14" fill="#fff5f5" stroke="#e07070" stroke-width="1" transform="rotate(315 0 0) translate(0 22)"></ellipse>
+    <circle cx="0" cy="0" r="12" fill="#f08a8a"></circle>
+    <circle cx="-3" cy="-3" r="3" fill="#fff5f5" opacity="0.6"></circle>
+  </g>
+
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  
+  <g transform="translate(50 80) rotate(-4)">
+    <rect width="220" height="160" fill="#fff5f5" stroke="#f5c0c0" stroke-width="1.5"></rect>
+    <path d="M0 0 L110 90 L220 0" fill="#fff5f5" stroke="#f5c0c0" stroke-width="1.5"></path>
+    <path d="M0 160 L80 80 M220 160 L140 80" fill="none" stroke="#f5c0c0" stroke-width="1.5"></path>
+  </g>
+  
+  <g transform="translate(110 200) rotate(8)">
+    <rect width="220" height="150" fill="#ffffff" stroke="#f5c0c0" stroke-width="1.5"></rect>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#f5d3d3" stroke-width="1"></line>
+    <line x1="20" y1="55" x2="200" y2="55" stroke="#f5d3d3" stroke-width="1"></line>
+    <line x1="20" y1="75" x2="160" y2="75" stroke="#f5d3d3" stroke-width="1"></line>
+    <line x1="20" y1="95" x2="190" y2="95" stroke="#f5d3d3" stroke-width="1"></line>
+  </g>
+  
+  <g transform="translate(280 130)">
+    <circle cx="0" cy="0" r="38" fill="#e07070"></circle>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#a85050" stroke-width="1" stroke-dasharray="2 3"></circle>
+    <circle cx="-3" cy="-4" r="32" fill="none" stroke="#f08a8a" stroke-width="1.5"></circle>
+    <text x="0" y="6" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#fff5f5">C</text>
+    
+    <path d="M-30 18 Q -28 32, -22 36" fill="#e07070"></path>
+    <path d="M28 -10 Q 36 -8, 38 -2" fill="#e07070"></path>
+  </g>
+
+</svg>

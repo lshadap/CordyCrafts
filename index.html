@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cordy's Crafts · Hand-made with love</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--cc-parchment); color: var(--cc-fg-primary); }
+  * { box-sizing: border-box; }
+  body { font-family: var(--cc-font-sans); -webkit-font-smoothing: antialiased; }
+
+  /* Tweaks panel */
+  .tweaks-panel {
+    position: fixed; right: 24px; bottom: 24px; z-index: 50;
+    width: 300px; background: #faf9f5; border-radius: 14px;
+    box-shadow: 0 0 0 1px #e8e6dc, 0 16px 36px rgba(20,20,19,0.12);
+    padding: 18px 20px 20px; font-family: var(--cc-font-sans);
+    display: none;
+  }
+  .tweaks-panel.open { display: block; }
+  .tweaks-panel h4 {
+    font-family: var(--cc-font-serif); font-weight: 500; font-size: 17px;
+    margin: 0 0 4px; color: #141413;
+  }
+  .tweaks-panel .sub {
+    font-size: 12px; color: #87867f; margin-bottom: 16px;
+  }
+  .tweak-row { margin-bottom: 16px; }
+  .tweak-row:last-child { margin-bottom: 0; }
+  .tweak-label {
+    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: #87867f; margin-bottom: 8px; font-weight: 500;
+  }
+  .swatch-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .swatch {
+    width: 28px; height: 28px; border-radius: 999px; cursor: pointer;
+    border: none; box-shadow: 0 0 0 1px #e8e6dc;
+    transition: transform 180ms, box-shadow 180ms;
+  }
+  .swatch.active { box-shadow: 0 0 0 2px #141413; transform: scale(1.08); }
+  .opt-row { display: flex; flex-direction: column; gap: 6px; }
+  .opt {
+    text-align: left; background: transparent; border: none; cursor: pointer;
+    padding: 8px 10px; border-radius: 8px; font-family: var(--cc-font-sans);
+    font-size: 13px; color: #4d4c48;
+    box-shadow: 0 0 0 1px #e8e6dc;
+  }
+  .opt.active { background: #141413; color: #faf9f5; box-shadow: none; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  // Tweakable defaults (persisted to disk via edit mode)
+  window.TWEAKS = /*EDITMODE-BEGIN*/{
+    "accent": "coral",
+    "headline": "warm"
+  }/*EDITMODE-END*/;
+</script>
+
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="hero.jsx"></script>
+<script type="text/babel" src="products.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+
+<script type="text/babel">
+  const ACCENTS = {
+    coral:      '#f08a8a',
+    blush:      '#f5a3a3',
+    rose:       '#e07070',
+    cream:      '#fce4e4',
+    sage:       '#9aad96',
+  };
+  const HEADLINES = {
+    warm:     { h: "Hand-made,\nwith love.",             s: "A little studio of three crafts — paper, candles, and polymer clay — all small-batch, all made by hand at the same kitchen table." },
+    heirloom: { h: "Sweet things,\nmade slowly.",         s: "Hand-folded paper, hand-poured candles, and hand-shaped clay charms — little keepsakes meant to be held a long time." },
+    playful:  { h: "Three crafts,\none happy\nmess.",      s: "Paper hearts, candle pours, and clay charms from a maker who believes the best gifts smell faintly of beeswax." },
+    quiet:    { h: "Made slowly,\non purpose.",            s: "We don't rush the fold or the pour. Cordy's Crafts is where patience turns into something you can hold." },
+  };
+
+  const App = () => {
+    const [tweaks, setTweaks] = React.useState(window.TWEAKS);
+    const [panel, setPanel] = React.useState(false);
+
+    // Edit-mode protocol
+    React.useEffect(() => {
+      const handler = (e) => {
+        if (e.data?.type === '__activate_edit_mode') setPanel(true);
+        if (e.data?.type === '__deactivate_edit_mode') setPanel(false);
+      };
+      window.addEventListener('message', handler);
+      window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+      return () => window.removeEventListener('message', handler);
+    }, []);
+
+    const setKey = (key, val) => {
+      setTweaks(prev => {
+        const next = { ...prev, [key]: val };
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: val } }, '*');
+        return next;
+      });
+    };
+
+    const accent = ACCENTS[tweaks.accent] || ACCENTS.sage;
+    const copy = HEADLINES[tweaks.headline] || HEADLINES.warm;
+
+    const [cartOpen, setCartOpen] = React.useState(false);
+    const [bookingFor, setBookingFor] = React.useState(null);
+    React.useEffect(() => {
+      window.openCart = () => setCartOpen(true);
+    }, []);
+
+    return (
+      <React.Fragment>
+        <Nav accent={accent}/>
+        <Hero headline={copy.h} sub={copy.s} accent={accent}/>
+        <Categories accent={accent}/>
+        <ProductGrid accent={accent}/>
+        <ClassesGrid accent={accent} onBook={setBookingFor}/>
+        <About accent={accent}/>
+        <Newsletter accent={accent}/>
+        <InstagramStrip/>
+        <Footer/>
+        <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} accent={accent}/>
+        <BookingModal klass={bookingFor} onClose={() => setBookingFor(null)} accent={accent}/>
+
+        <div className={`tweaks-panel ${panel ? 'open' : ''}`}>
+          <h4>Tweaks</h4>
+          <div className="sub">Adjust the accent & hero copy.</div>
+          <div className="tweak-row">
+            <div className="tweak-label">Accent color</div>
+            <div className="swatch-row">
+              {Object.entries(ACCENTS).map(([k, v]) => (
+                <button key={k} className={`swatch ${tweaks.accent === k ? 'active' : ''}`}
+                  style={{ background: v }}
+                  onClick={() => setKey('accent', k)}
+                  title={k}/>
+              ))}
+            </div>
+          </div>
+          <div className="tweak-row">
+            <div className="tweak-label">Hero headline</div>
+            <div className="opt-row">
+              {Object.entries(HEADLINES).map(([k, v]) => (
+                <button key={k} className={`opt ${tweaks.headline === k ? 'active' : ''}`}
+                  onClick={() => setKey('headline', k)}>
+                  <strong style={{textTransform:'capitalize', fontWeight:500}}>{k}</strong>
+                  <span style={{opacity:0.7}}> · {v.h.split('\n').join(' ')}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  };
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

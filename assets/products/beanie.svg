@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  
+  <ellipse cx="200" cy="340" rx="100" ry="10" fill="#f5c0c0" opacity="0.6"></ellipse>
+  
+  <g transform="translate(120 110)">
+    
+    <rect x="0" y="40" width="160" height="200" rx="8" fill="#fff5f5" stroke="#f5c0c0" stroke-width="2"></rect>
+    
+    <rect x="6" y="80" width="148" height="156" rx="4" fill="#f5a3a3"></rect>
+    
+    <ellipse cx="80" cy="80" rx="74" ry="6" fill="#f08a8a"></ellipse>
+    
+    <line x1="80" y1="70" x2="80" y2="80" stroke="#3a2a2a" stroke-width="2"></line>
+    
+    <path d="M80 50 Q 75 60, 80 70 Q 85 60, 80 50" fill="#fff5f5" stroke="#e07070" stroke-width="1.5"></path>
+    
+    <rect x="20" y="130" width="120" height="70" fill="#fff5f5" stroke="#a85050" stroke-width="1"></rect>
+    <text x="80" y="158" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#a85050">Rose Garden</text>
+    <text x="80" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#a85050" letter-spacing="2">SOY · 8oz</text>
+    
+    <rect x="14" y="50" width="6" height="180" rx="3" fill="#ffffff" opacity="0.6"></rect>
+  </g>
+  
+  <g transform="translate(80 280)">
+    <ellipse cx="0" cy="0" rx="14" ry="8" fill="#e07070" transform="rotate(-20)"></ellipse>
+    <ellipse cx="20" cy="-4" rx="10" ry="6" fill="#f08a8a" transform="rotate(15)"></ellipse>
+  </g>
+
+</svg>

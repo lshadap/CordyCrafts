@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#fce4e4"></rect>
+  
+  <g transform="translate(140, 150)">
+    <circle r="48" fill="#ffffff" stroke="#f08a8a" stroke-width="1.2"></circle>
+    <g fill="#f08a8a">
+      <ellipse cx="0" cy="-30" rx="10" ry="18"></ellipse>
+      <ellipse cx="30" cy="0" rx="18" ry="10"></ellipse>
+      <ellipse cx="0" cy="30" rx="10" ry="18"></ellipse>
+      <ellipse cx="-30" cy="0" rx="18" ry="10"></ellipse>
+    </g>
+    <circle r="10" fill="#f5a3a3"></circle>
+    <circle cy="-58" r="5" fill="none" stroke="#b0aea5" stroke-width="1.5"></circle>
+  </g>
+  <g transform="translate(260, 180)">
+    <circle r="36" fill="#f08a8a"></circle>
+    <path d="M0 14 C -16 0, -22 -10, -14 -16 C -8 -20, 0 -14, 0 -10 C 0 -14, 8 -20, 14 -16 C 22 -10, 16 0, 0 14 Z" fill="#ffffff"></path>
+    <circle cy="-44" r="5" fill="none" stroke="#b0aea5" stroke-width="1.5"></circle>
+  </g>
+  <g transform="translate(310, 100)">
+    <rect x="-18" y="-18" width="36" height="36" rx="6" fill="#fce4e4" stroke="#f08a8a"></rect>
+    <text x="0" y="6" text-anchor="middle" font-family="cursive" font-size="20" fill="#f08a8a">✿</text>
+  </g>
+</svg>

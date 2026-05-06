@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  
+  <circle cx="200" cy="200" r="90" fill="none" stroke="#a85050" stroke-width="2"></circle>
+  
+  
+  <g transform="translate(140 130)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#a85050" stroke-width="1"></line>
+    <path d="M0 25 C -10 18, -25 25, -25 38 C -25 50, 0 65, 0 65 C 0 65, 25 50, 25 38 C 25 25, 10 18, 0 25 Z" fill="#f08a8a" stroke="#a85050" stroke-width="1.5"></path>
+  </g>
+  
+  <g transform="translate(260 130)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#a85050" stroke-width="1"></line>
+    <path d="M0 25 L8 45 L30 45 L13 58 L20 78 L0 65 L-20 78 L-13 58 L-30 45 L-8 45 Z" fill="#f5a3a3" stroke="#a85050" stroke-width="1.5"></path>
+  </g>
+  
+  <g transform="translate(110 230)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#a85050" stroke-width="1"></line>
+    <circle cx="0" cy="45" r="22" fill="#fff5f5" stroke="#a85050" stroke-width="1.5"></circle>
+    <circle cx="-5" cy="40" r="3" fill="#f08a8a"></circle>
+    <circle cx="6" cy="48" r="2.5" fill="#e07070"></circle>
+    <circle cx="-2" cy="55" r="2" fill="#f5a3a3"></circle>
+  </g>
+  
+  <g transform="translate(290 230)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#a85050" stroke-width="1"></line>
+    <circle cx="8.572527594031472e-16" cy="31" r="9" fill="#f5a3a3" stroke="#a85050" stroke-width="1"></circle><circle cx="13.31479122813215" cy="40.673762078750734" r="9" fill="#f5a3a3" stroke="#a85050" stroke-width="1"></circle><circle cx="8.228993532094623" cy="56.326237921249266" r="9" fill="#f5a3a3" stroke="#a85050" stroke-width="1"></circle><circle cx="-8.228993532094622" cy="56.326237921249266" r="9" fill="#f5a3a3" stroke="#a85050" stroke-width="1"></circle><circle cx="-13.31479122813215" cy="40.673762078750734" r="9" fill="#f5a3a3" stroke="#a85050" stroke-width="1"></circle>
+    <circle cx="0" cy="45" r="7" fill="#e07070"></circle>
+  </g>
+  
+  <g transform="translate(200 90)">
+    <rect x="-30" y="-8" width="60" height="16" rx="3" fill="#fff5f5" stroke="#a85050" stroke-width="1"></rect>
+    <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="9" fill="#a85050">Cordy&#39;s</text>
+  </g>
+
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  <g transform="translate(200 200)">
+    
+    <circle r="80" fill="#fff5f5" stroke="#f5c0c0" stroke-width="2"></circle>
+    
+    <ellipse cx="2.4492935982947065e-15" cy="-40" rx="22" ry="34" fill="#f08a8a" stroke="#a85050" stroke-width="1.5" transform="rotate(0 0 0) translate(0 -40)"></ellipse><ellipse cx="38.04226065180614" cy="-12.360679774997896" rx="22" ry="34" fill="#f08a8a" stroke="#a85050" stroke-width="1.5" transform="rotate(72 0 0) translate(0 -40)"></ellipse><ellipse cx="23.511410091698927" cy="32.3606797749979" rx="22" ry="34" fill="#f08a8a" stroke="#a85050" stroke-width="1.5" transform="rotate(144 0 0) translate(0 -40)"></ellipse><ellipse cx="-23.51141009169892" cy="32.3606797749979" rx="22" ry="34" fill="#f08a8a" stroke="#a85050" stroke-width="1.5" transform="rotate(216 0 0) translate(0 -40)"></ellipse><ellipse cx="-38.04226065180614" cy="-12.360679774997909" rx="22" ry="34" fill="#f08a8a" stroke="#a85050" stroke-width="1.5" transform="rotate(288 0 0) translate(0 -40)"></ellipse>
+    
+    <circle r="22" fill="#e07070" stroke="#a85050" stroke-width="1.5"></circle>
+    <circle cx="10" cy="0" r="2.5" fill="#fff5f5"></circle><circle cx="5.000000000000001" cy="8.660254037844386" r="2.5" fill="#fff5f5"></circle><circle cx="-4.999999999999998" cy="8.660254037844387" r="2.5" fill="#fff5f5"></circle><circle cx="-10" cy="1.2246467991473533e-15" r="2.5" fill="#fff5f5"></circle><circle cx="-5.000000000000004" cy="-8.660254037844384" r="2.5" fill="#fff5f5"></circle><circle cx="5.000000000000001" cy="-8.660254037844386" r="2.5" fill="#fff5f5"></circle>
+    <circle r="4" fill="#fff5f5"></circle>
+    
+    <line x1="-50" y1="55" x2="55" y2="55" stroke="#a85050" stroke-width="1.5"></line>
+    <circle cx="-52" cy="55" r="3" fill="#a85050"></circle>
+  </g>
+
+</svg>

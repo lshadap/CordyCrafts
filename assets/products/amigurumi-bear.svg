@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  <defs>
+    <pattern id="dots1" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="7" cy="7" r="1.2" fill="#f5a3a3" opacity="0.45"></circle>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#dots1)"></rect>
+  
+  <g transform="translate(80 90) rotate(-6 120 110)">
+    <rect x="0" y="0" width="240" height="220" rx="6" fill="#ffffff" stroke="#f5c0c0" stroke-width="2"></rect>
+    <rect x="0" y="0" width="240" height="220" rx="6" fill="none" stroke="#f08a8a" stroke-width="1" stroke-dasharray="3 4" transform="translate(8 8)"></rect>
+    
+    <path d="M120 85 C 100 60, 65 65, 65 100 C 65 135, 120 165, 120 165 C 120 165, 175 135, 175 100 C 175 65, 140 60, 120 85 Z" fill="#f08a8a"></path>
+    <text x="120" y="195" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#a85050">with love</text>
+  </g>
+  
+  <g transform="translate(40 240) rotate(8)">
+    <rect width="160" height="100" rx="2" fill="#fff5f5" stroke="#f5c0c0" stroke-width="1.5"></rect>
+    <path d="M0 0 L80 60 L160 0" fill="none" stroke="#f5c0c0" stroke-width="1.5"></path>
+  </g>
+
+</svg>

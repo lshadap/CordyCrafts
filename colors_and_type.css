@@ -1,0 +1,265 @@
+/* ============================================================
+   ClaudeClone Design System — Tokens
+   Warm, literary, editorial. Parchment + Terracotta + Serif.
+   ============================================================ */
+
+/* ---------- Fonts ----------
+   NOTE: Anthropic's custom type family is not publicly distributed.
+   We substitute close-matching Google Fonts:
+     Anthropic Serif  →  "Tiempos"-adjacent: Fraunces (humanist serif, 500)
+     Anthropic Sans   →  Styrene-adjacent:  "Inter" (neutral geometric-humanist)
+     Anthropic Mono   →  JetBrains Mono
+   If you have the real Anthropic TTFs, drop them in fonts/ and
+   replace the @import below with @font-face declarations.
+---------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  --cc-font-script: 'Pacifico', 'Caveat', cursive;
+}
+
+:root {
+  /* ============ COLOR — Brand (Cordy's Crafts) ============ */
+  --cc-terracotta:        #f08a8a;  /* primary CTA, brand accent (coral)  */
+  --cc-coral:             #f5a3a3;  /* text accents, links on dark        */
+  --cc-coral-deep:        #e07070;  /* darker coral for hover/press       */
+  --cc-coral-soft:        #fce4e4;  /* very pale coral wash               */
+
+  /* ============ COLOR — Surfaces ============ */
+  --cc-parchment:         #f5f4ed;  /* primary page bg — warm cream       */
+  --cc-ivory:             #faf9f5;  /* card / elevated surface            */
+  --cc-white:             #ffffff;  /* max contrast buttons only          */
+  --cc-sand:              #e8e6dc;  /* warm button bg                     */
+  --cc-surface-dark:      #30302e;  /* dark card / nav border             */
+  --cc-deep-dark:         #141413;  /* dark page bg + primary text        */
+
+  /* ============ COLOR — Text (warm neutrals) ============ */
+  --cc-fg-primary:        #141413;  /* body + headlines on light          */
+  --cc-fg-charcoal:       #4d4c48;  /* button text on warm sand           */
+  --cc-fg-dark-warm:      #3d3d3a;  /* emphasized secondary / links       */
+  --cc-fg-olive:          #5e5d59;  /* secondary body                     */
+  --cc-fg-stone:          #87867f;  /* tertiary / metadata                */
+  --cc-fg-silver:         #b0aea5;  /* text on dark surfaces              */
+
+  /* ============ COLOR — Borders & Rings ============ */
+  --cc-border-cream:      #f0eee6;  /* std light border, barely there     */
+  --cc-border-warm:       #e8e6dc;  /* emphasized light border            */
+  --cc-border-dark:       #30302e;  /* border on dark                     */
+  --cc-ring-warm:         #d1cfc5;  /* hover ring                         */
+  --cc-ring-subtle:       #dedc01;  /* secondary ring (pale)              */
+  --cc-ring-deep:         #c2c0b6;  /* active / pressed                   */
+
+  /* ============ COLOR — Semantic ============ */
+  --cc-error:             #b53333;  /* warm crimson                       */
+  --cc-focus:             #3898ec;  /* the ONLY cool color — focus rings  */
+
+  /* ============ TYPOGRAPHY — Families ============ */
+  --cc-font-serif:   'Fraunces', 'Anthropic Serif', Georgia, 'Times New Roman', serif;
+  --cc-font-sans:    'Inter', 'Anthropic Sans', system-ui, -apple-system, Arial, sans-serif;
+  --cc-font-mono:    'JetBrains Mono', 'Anthropic Mono', ui-monospace, Menlo, monospace;
+
+  /* ============ TYPOGRAPHY — Scale (px) ============ */
+  --cc-size-display:      64px;   /* hero                                 */
+  --cc-size-section:      52px;   /* section heading                      */
+  --cc-size-h2-lg:        36.8px; /* sub-heading large                    */
+  --cc-size-h2:           32px;   /* sub-heading                          */
+  --cc-size-h3:           25.6px; /* sub-heading small                    */
+  --cc-size-h4:           20.8px; /* feature title                        */
+  --cc-size-body-lg:      20px;   /* intro paragraph                      */
+  --cc-size-body:         17px;   /* nav / body serif                     */
+  --cc-size-base:         16px;   /* standard body                        */
+  --cc-size-sm:           15px;   /* compact body / mono                  */
+  --cc-size-caption:      14px;
+  --cc-size-label:        12px;
+  --cc-size-overline:     10px;
+  --cc-size-micro:        9.6px;
+
+  /* Line heights */
+  --cc-lh-tight:          1.10;
+  --cc-lh-heading:        1.20;
+  --cc-lh-sub:            1.30;
+  --cc-lh-snug:           1.43;
+  --cc-lh-body:           1.60;   /* editorial, book-like                 */
+
+  /* Weights (serif caps at 500) */
+  --cc-weight-regular:    400;
+  --cc-weight-medium:     500;
+  --cc-weight-semibold:   600;
+
+  /* Letter spacing */
+  --cc-track-label:       0.12px;
+  --cc-track-overline:    0.5px;
+  --cc-track-mono:        -0.32px;
+
+  /* ============ SPACING ============ */
+  --cc-space-1:   3px;
+  --cc-space-2:   4px;
+  --cc-space-3:   6px;
+  --cc-space-4:   8px;   /* base unit   */
+  --cc-space-5:   10px;
+  --cc-space-6:   12px;
+  --cc-space-7:   16px;
+  --cc-space-8:   20px;
+  --cc-space-9:   24px;
+  --cc-space-10:  30px;
+  --cc-space-section: 96px; /* between major sections */
+
+  /* ============ RADII ============ */
+  --cc-radius-xs:   4px;   /* sharp        */
+  --cc-radius-sm:   6px;   /* subtly       */
+  --cc-radius:      8px;   /* default card / button */
+  --cc-radius-md:   12px;  /* primary button / input */
+  --cc-radius-lg:   16px;  /* feature card / video */
+  --cc-radius-xl:   24px;  /* tag / pill highlight */
+  --cc-radius-2xl:  32px;  /* hero container / embedded media */
+
+  /* ============ ELEVATION ============ */
+  --cc-shadow-ring:        0 0 0 1px var(--cc-ring-warm);
+  --cc-shadow-ring-deep:   0 0 0 1px var(--cc-ring-deep);
+  --cc-shadow-ring-dark:   0 0 0 1px var(--cc-surface-dark);
+  --cc-shadow-whisper:     rgba(0,0,0,0.05) 0px 4px 24px;
+  --cc-shadow-inset:       inset 0 0 0 1px rgba(20,20,19,0.15);
+
+  /* Button composite shadows (warm ring halo) */
+  --cc-btn-sand-shadow:    #e8e6dc 0 0 0 0, #d1cfc5 0 0 0 1px;
+  --cc-btn-brand-shadow:   #c96442 0 0 0 0, #c96442 0 0 0 1px;
+  --cc-btn-dark-shadow:    #30302e 0 0 0 0, #4d4c48 0 0 0 1px;
+
+  /* ============ MOTION ============ */
+  --cc-ease:          cubic-bezier(0.4, 0, 0.2, 1);
+  --cc-ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --cc-dur-fast:      120ms;
+  --cc-dur:           200ms;
+  --cc-dur-slow:      320ms;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENTS — drop-in defaults
+   Attach class "cc" to a root to opt-in, or use these as refs.
+   ============================================================ */
+
+.cc,
+.cc body {
+  background: var(--cc-parchment);
+  color: var(--cc-fg-primary);
+  font-family: var(--cc-font-sans);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.cc h1, .cc .h1 {
+  font-family: var(--cc-font-serif);
+  font-weight: var(--cc-weight-medium);
+  font-size: var(--cc-size-display);
+  line-height: var(--cc-lh-tight);
+  letter-spacing: normal;
+  color: var(--cc-fg-primary);
+  margin: 0;
+}
+
+.cc h2, .cc .h2 {
+  font-family: var(--cc-font-serif);
+  font-weight: var(--cc-weight-medium);
+  font-size: var(--cc-size-section);
+  line-height: var(--cc-lh-heading);
+  color: var(--cc-fg-primary);
+  margin: 0;
+}
+
+.cc h3, .cc .h3 {
+  font-family: var(--cc-font-serif);
+  font-weight: var(--cc-weight-medium);
+  font-size: var(--cc-size-h2);
+  line-height: var(--cc-lh-tight);
+  color: var(--cc-fg-primary);
+  margin: 0;
+}
+
+.cc h4, .cc .h4 {
+  font-family: var(--cc-font-serif);
+  font-weight: var(--cc-weight-medium);
+  font-size: var(--cc-size-h3);
+  line-height: var(--cc-lh-heading);
+  color: var(--cc-fg-primary);
+  margin: 0;
+}
+
+.cc h5, .cc .h5 {
+  font-family: var(--cc-font-serif);
+  font-weight: var(--cc-weight-medium);
+  font-size: var(--cc-size-h4);
+  line-height: var(--cc-lh-heading);
+  color: var(--cc-fg-primary);
+  margin: 0;
+}
+
+.cc p, .cc .body {
+  font-family: var(--cc-font-sans);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-lh-body);
+  color: var(--cc-fg-olive);
+}
+
+.cc .lead {
+  font-family: var(--cc-font-sans);
+  font-size: var(--cc-size-body-lg);
+  line-height: var(--cc-lh-body);
+  color: var(--cc-fg-olive);
+}
+
+.cc .serif-body {
+  font-family: var(--cc-font-serif);
+  font-size: var(--cc-size-body);
+  line-height: var(--cc-lh-body);
+  color: var(--cc-fg-primary);
+}
+
+.cc .caption {
+  font-size: var(--cc-size-caption);
+  line-height: var(--cc-lh-snug);
+  color: var(--cc-fg-stone);
+}
+
+.cc .label {
+  font-size: var(--cc-size-label);
+  line-height: var(--cc-lh-heading);
+  letter-spacing: var(--cc-track-label);
+  color: var(--cc-fg-olive);
+  font-weight: var(--cc-weight-medium);
+}
+
+.cc .overline {
+  font-size: var(--cc-size-overline);
+  line-height: var(--cc-lh-body);
+  letter-spacing: var(--cc-track-overline);
+  text-transform: uppercase;
+  color: var(--cc-fg-stone);
+}
+
+.cc code, .cc .mono {
+  font-family: var(--cc-font-mono);
+  font-size: var(--cc-size-sm);
+  line-height: var(--cc-lh-body);
+  letter-spacing: var(--cc-track-mono);
+  color: var(--cc-fg-primary);
+}
+
+.cc a {
+  color: var(--cc-fg-dark-warm);
+  text-decoration: underline;
+  text-decoration-color: var(--cc-border-warm);
+  text-underline-offset: 3px;
+  transition: color var(--cc-dur) var(--cc-ease);
+}
+.cc a:hover { color: var(--cc-fg-primary); text-decoration-color: currentColor; }
+
+/* Dark section helper */
+.cc-dark {
+  background: var(--cc-deep-dark);
+  color: var(--cc-fg-silver);
+}
+.cc-dark h1, .cc-dark h2, .cc-dark h3, .cc-dark h4, .cc-dark h5 { color: var(--cc-ivory); }
+.cc-dark p { color: var(--cc-fg-silver); }
+.cc-dark a { color: var(--cc-coral); text-decoration-color: rgba(217,119,87,0.4); }

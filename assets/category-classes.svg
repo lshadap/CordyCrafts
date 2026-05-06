@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#fce4e4"></rect>
+  
+  <g>
+    
+    <rect x="60" y="180" width="280" height="14" fill="#ffffff" stroke="#f08a8a" stroke-width="1.2"></rect>
+    
+    <g transform="translate(110, 100)">
+      <rect width="80" height="80" rx="6" fill="#ffffff" stroke="#f08a8a" stroke-width="1.2" stroke-dasharray="3 2"></rect>
+      <rect width="80" height="22" rx="6" fill="#f08a8a"></rect>
+      <text x="40" y="60" text-anchor="middle" font-family="serif" font-size="32" fill="#f08a8a" font-weight="500">14</text>
+      <text x="40" y="16" text-anchor="middle" font-family="cursive" font-size="13" fill="#ffffff" font-style="italic">Sat</text>
+    </g>
+    
+    <g transform="translate(240, 130)">
+      <circle r="36" fill="#ffffff" stroke="#f08a8a" stroke-width="1.4"></circle>
+      <line x1="0" y1="0" x2="0" y2="-22" stroke="#f08a8a" stroke-width="2" stroke-linecap="round"></line>
+      <line x1="0" y1="0" x2="18" y2="6" stroke="#f08a8a" stroke-width="2" stroke-linecap="round"></line>
+      <circle r="3" fill="#f08a8a"></circle>
+      <g stroke="#f08a8a" stroke-width="1" fill="none">
+        <line x1="0" y1="-30" x2="0" y2="-26"></line>
+        <line x1="30" y1="0" x2="26" y2="0"></line>
+        <line x1="0" y1="30" x2="0" y2="26"></line>
+        <line x1="-30" y1="0" x2="-26" y2="0"></line>
+      </g>
+    </g>
+  </g>
+  
+  <path d="M40 240 Q 200 220 360 240" stroke="#f08a8a" stroke-width="2" fill="none" stroke-dasharray="4 3"></path>
+</svg>

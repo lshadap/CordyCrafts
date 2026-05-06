@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#fce4e4"></rect>
+  
+  <g opacity="0.95">
+    
+    <g transform="translate(240 100) rotate(15)">
+      <path d="M0 60 L60 0 L120 30 L100 60 L120 90 L60 120 Z" fill="#f5a3a3" stroke="#e07070" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M60 0 L60 60 L100 60" fill="none" stroke="#e07070" stroke-width="1.5"></path>
+      <path d="M120 30 L150 20 L140 35" fill="#f5a3a3" stroke="#e07070" stroke-width="2" stroke-linejoin="round"></path>
+    </g>
+    
+    <g transform="translate(60 180) rotate(-8)">
+      <path d="M0 70 L70 0 L140 35 L115 70 L140 105 L70 140 Z" fill="#f08a8a" stroke="#a85050" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M70 0 L70 70 L115 70" fill="none" stroke="#a85050" stroke-width="1.5"></path>
+      <path d="M140 35 L175 25 L160 42" fill="#f08a8a" stroke="#a85050" stroke-width="2" stroke-linejoin="round"></path>
+    </g>
+    
+    <g transform="translate(280 240) rotate(-10)">
+      <path d="M0 40 L40 0 L80 20 L65 40 L80 60 L40 80 Z" fill="#fff5f5" stroke="#e07070" stroke-width="1.6" stroke-linejoin="round"></path>
+      <path d="M80 20 L100 13 L92 24" fill="#fff5f5" stroke="#e07070" stroke-width="1.6"></path>
+    </g>
+  </g>
+
+</svg>
