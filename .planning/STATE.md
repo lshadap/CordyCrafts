@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 ## Current Position
 
 Phase: 2 of 4 (Supabase Integration)
-Plan: 2 of 4 in current phase
-Status: Phase 2 executing — Waves 0+1 complete, proceeding to Wave 2
-Last activity: 2026-05-07 — 02-01 SQL schema applied to live Supabase; 4 tables + RLS + seed live
+Plan: 3 of 4 in current phase
+Status: Phase 2 executing — Waves 0+1+2 complete, proceeding to Wave 3
+Last activity: 2026-05-07 — 02-02 done; whatsapp.js GREEN, hooks created, ProductGrid/ClassesGrid wired to Supabase
 
 Progress: [██████████] Phase 1 100% · Overall 25%
 

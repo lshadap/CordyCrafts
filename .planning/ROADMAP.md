@@ -75,7 +75,7 @@ Plans:
 - [x] 02-01-PLAN.md — supabase/migrations/...sql (4 tables + RLS + 4 policies) + supabase/seed.sql (12 products + 8 classes) + manual schema push
 
 **Wave 2** *(blocked on Waves 0 + 1 completion)*:
-- [ ] 02-02-PLAN.md — src/lib/whatsapp.js + src/hooks/useProducts.js + src/hooks/useClasses.js + src/products.jsx wired to live data with field renames
+- [x] 02-02-PLAN.md — src/lib/whatsapp.js + src/hooks/useProducts.js + src/hooks/useClasses.js + src/products.jsx wired to live data with field renames
 
 **Wave 3** *(blocked on Wave 2 completion)*:
 - [ ] 02-03-PLAN.md — src/sections.jsx CartDrawer + BookingModal: async INSERT-then-WhatsApp guards with inline red error UX + manual browser verification
