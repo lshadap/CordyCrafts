@@ -68,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-07
-Stopped at: Phase 1 complete — all 7 plans done, human-verified
-Resume file: .planning/phases/02-supabase-integration/ (plan-phase 2 next)
+Stopped at: Phase 3 context gathered
+Resume file: .planning/phases/03-mobile-polish/03-CONTEXT.md
