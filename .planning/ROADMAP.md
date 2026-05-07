@@ -13,7 +13,7 @@ Migrate the existing Claude Design CDN prototype into a production-ready Vite 5 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Vite Scaffold** - Migrate the CDN prototype into a buildable Vite 5 + React project without rewriting any components
-- [ ] **Phase 2: Supabase Integration** - Wire live data, write orders/bookings to Supabase before WhatsApp link opens, enable RLS
+- [x] **Phase 2: Supabase Integration** - Wire live data, write orders/bookings to Supabase before WhatsApp link opens, enable RLS
 - [ ] **Phase 3: Mobile Polish** - Responsive grid layouts, loading skeletons, and SEO/OG meta tags
 - [ ] **Phase 4: Vercel Deploy** - Connect GitHub to Vercel, set env vars, verify production, write setup docs
 

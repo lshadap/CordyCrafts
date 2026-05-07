@@ -20,10 +20,10 @@ A customer on a phone can browse the full catalogue, add items to cart, and plac
 
 ### Active
 
-- [ ] Migrate Claude Design prototype into Vite 5 + React + React Router v6 project structure
-- [ ] Fetch products and classes dynamically from Supabase
-- [ ] Write orders to Supabase `orders` table on WhatsApp checkout
-- [ ] Write bookings to Supabase `bookings` table on WhatsApp booking
+- [x] Migrate Claude Design prototype into Vite 5 + React + React Router v6 project structure — Validated Phase 1
+- [x] Fetch products and classes dynamically from Supabase — Validated Phase 2
+- [x] Write orders to Supabase `orders` table on WhatsApp checkout — Validated Phase 2
+- [x] Write bookings to Supabase `bookings` table on WhatsApp booking — Validated Phase 2
 - [ ] Mobile-first responsive layout (most visitors on phones)
 - [ ] Loading skeleton states for product and class grids
 - [ ] SEO/OG meta tags (title, description, og:image per page)
