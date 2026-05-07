@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 ## Current Position
 
 Phase: 2 of 4 (Supabase Integration)
-Plan: 0 of 4 in current phase
-Status: Phase 2 planned — ready to execute (4 plans in 4 waves)
-Last activity: 2026-05-07 — Phase 2 planned and verified
+Plan: 1 of 4 in current phase
+Status: Phase 2 executing — Wave 0 complete (02-00 done)
+Last activity: 2026-05-07 — 02-00 test stubs committed; whatsapp.test RED, others GREEN
 
 Progress: [██████████] Phase 1 100% · Overall 25%
 

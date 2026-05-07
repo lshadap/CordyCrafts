@@ -69,7 +69,7 @@ Plans:
 Plans:
 
 **Wave 0** (test infrastructure):
-- [ ] 02-00-PLAN.md — whatsapp.test.js (RED stub for WA-01/02/03) + supabase.test.js (GREEN guard pattern for SUPA-04/05)
+- [x] 02-00-PLAN.md — whatsapp.test.js (RED stub for WA-01/02/03) + supabase.test.js (GREEN guard pattern for SUPA-04/05)
 
 **Wave 1** *(runs parallel to Wave 0)*:
 - [ ] 02-01-PLAN.md — supabase/migrations/...sql (4 tables + RLS + 4 policies) + supabase/seed.sql (12 products + 8 classes) + manual schema push
