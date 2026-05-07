@@ -3,6 +3,8 @@ import React from 'react'
 import { Icon, Logo, Button, Overline, CircleBadge, HeartMark } from './primitives.jsx'
 import { useCartContext } from './CartContext.jsx'
 import { inr } from './products.jsx'
+import { supabase } from './lib/supabase.js'
+import { buildOrderMessage, buildBookingMessage, buildWaUrl } from './lib/whatsapp.js'
 
 const About = ({ accent }) => (
   <section id="about" style={{ background: '#3a2a2a', color: '#fce4e4', borderTop: '1px solid #5a3a3a' }}>
@@ -221,15 +223,55 @@ const CartDrawer = ({ open, onClose, accent }) => {
   const [stage, setStage] = React.useState('cart'); // cart | form | done
   const [form, setForm] = React.useState({ name: '', phone: '', addr: '' });
   const [confirmation, setConfirmation] = React.useState(null);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState(null);
 
-  React.useEffect(() => { if (!open) { setStage('cart'); setConfirmation(null); } }, [open]);
+  React.useEffect(() => {
+    if (!open) {
+      setStage('cart');
+      setConfirmation(null);
+      setSubmitError(null);
+      setSubmitting(false);
+    }
+  }, [open]);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone) return;
-    setConfirmation({ ...form, total: c.total(), items: [...c.items] });
+    setSubmitting(true);
+    setSubmitError(null);
+
+    // Strip img and cat — orders.items JSONB schema requires only { sku, name, qty, price }
+    const itemsForInsert = c.items.map(i => ({
+      sku: i.sku, name: i.name, qty: i.qty, price: i.price,
+    }));
+    const totalForInsert = c.total();
+    const itemsSnapshot = [...c.items]; // capture before c.clear() for the confirmation panel
+
+    const { error } = await supabase.from('orders').insert({
+      customer_name: form.name,
+      customer_whatsapp: form.phone,
+      address: form.addr || '',
+      items: itemsForInsert,
+      total_amount: totalForInsert,
+      payment_status: 'pending',
+    });
+
+    if (error) {
+      setSubmitError('Something went wrong — please try again.');
+      setSubmitting(false);
+      return; // wa.me link NEVER opens on insert failure (Phase 2 success criterion #2)
+    }
+
+    // INSERT succeeded → build WhatsApp message and open it
+    const msg = buildOrderMessage(form, itemsSnapshot, totalForInsert);
+    const waUrl = buildWaUrl(msg);
+    window.open(waUrl, '_blank');
+
+    setConfirmation({ ...form, total: totalForInsert, items: itemsSnapshot });
     setStage('done');
     c.clear();
+    setSubmitting(false);
   };
 
   return (
@@ -334,18 +376,30 @@ const CartDrawer = ({ open, onClose, accent }) => {
                 <div style={{ fontSize: 11.5, color: '#7a5a5a' }}>Final price (incl. shipping) confirmed on WhatsApp.</div>
               </div>
             </div>
-            <div style={{ padding: '20px 24px', borderTop: '1px dashed #f5c0c0', display: 'flex', gap: 8 }}>
-              <button type="button" onClick={() => setStage('cart')} style={{
-                height: 52, padding: '0 20px', borderRadius: 999, border: 'none',
-                background: 'transparent', color: '#7a5a5a', fontFamily: 'var(--cc-font-sans)', fontSize: 14, cursor: 'pointer', boxShadow: '0 0 0 1px #f5c0c0',
-              }}>Back</button>
-              <button type="submit" style={{
-                flex: 1, height: 52, borderRadius: 999, border: 'none',
-                background: '#25D366', color: '#ffffff', fontFamily: 'var(--cc-font-sans)', fontSize: 15, fontWeight: 600, cursor: 'pointer',
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-              }}>
-                <WhatsAppIcon size={18}/> Send order to Cordeelia
-              </button>
+            <div style={{ padding: '20px 24px', borderTop: '1px dashed #f5c0c0' }}>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" onClick={() => setStage('cart')} style={{
+                  height: 52, padding: '0 20px', borderRadius: 999, border: 'none',
+                  background: 'transparent', color: '#7a5a5a', fontFamily: 'var(--cc-font-sans)', fontSize: 14, cursor: 'pointer', boxShadow: '0 0 0 1px #f5c0c0',
+                }}>Back</button>
+                <button type="submit" disabled={submitting} style={{
+                  flex: 1, height: 52, borderRadius: 999, border: 'none',
+                  background: submitting ? '#a0d8b3' : '#25D366', color: '#ffffff',
+                  fontFamily: 'var(--cc-font-sans)', fontSize: 15, fontWeight: 600,
+                  cursor: submitting ? 'not-allowed' : 'pointer',
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                }}>
+                  <WhatsAppIcon size={18}/> {submitting ? 'Sending...' : 'Send order to Cordeelia'}
+                </button>
+              </div>
+              {submitError && (
+                <div style={{
+                  marginTop: 10, fontFamily: 'var(--cc-font-sans)', fontSize: 13,
+                  color: '#c0392b', textAlign: 'center',
+                }}>
+                  {submitError}
+                </div>
+              )}
             </div>
           </form>
         )}
@@ -388,19 +442,48 @@ const BookingModal = ({ klass, onClose, accent }) => {
     pref: klass?.mode === 'Both' ? 'Online' : klass?.mode || 'Online',
     note: '',
   });
+  const [submitting, setSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState(null);
+
   React.useEffect(() => {
     if (klass) setForm(f => ({
       ...f, seats: 1,
       pref: klass.mode === 'Both' ? 'Online' : klass.mode,
     }));
     setStage('form');
+    setSubmitError(null);
+    setSubmitting(false);
   }, [klass]);
 
   if (!klass) return null;
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone) return;
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const { error } = await supabase.from('bookings').insert({
+      class_id: klass.id, // uuid FK to classes.id — NEVER klass.sku (Pitfall 4 in 02-RESEARCH.md)
+      customer_name: form.name,
+      customer_whatsapp: form.phone,
+      seats: form.seats,
+      mode_preference: form.pref,
+      message: form.note || null,
+      payment_status: 'pending',
+    });
+
+    if (error) {
+      setSubmitError('Something went wrong — please try again.');
+      setSubmitting(false);
+      return; // wa.me link NEVER opens on insert failure
+    }
+
+    const msg = buildBookingMessage(form, klass);
+    const waUrl = buildWaUrl(msg);
+    window.open(waUrl, '_blank');
+
     setStage('done');
+    setSubmitting(false);
   };
   const total = form.seats * klass.price;
 
@@ -441,8 +524,8 @@ const BookingModal = ({ klass, onClose, accent }) => {
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
                 <button type="button" onClick={() => setForm({ ...form, seats: Math.max(1, form.seats - 1) })} style={qtyBtn}>−</button>
                 <span style={{ minWidth: 40, textAlign: 'center', fontFamily: 'var(--cc-font-serif)', fontSize: 20, color: '#3a2a2a' }}>{form.seats}</span>
-                <button type="button" onClick={() => setForm({ ...form, seats: Math.min(klass.seats, form.seats + 1) })} style={qtyBtn}>+</button>
-                <span style={{ marginLeft: 12, fontFamily: 'var(--cc-font-sans)', fontSize: 12, color: '#7a5a5a' }}>{klass.seats} max</span>
+                <button type="button" onClick={() => setForm({ ...form, seats: Math.min(klass.seats_left ?? 99, form.seats + 1) })} style={qtyBtn}>+</button>
+                <span style={{ marginLeft: 12, fontFamily: 'var(--cc-font-sans)', fontSize: 12, color: '#7a5a5a' }}>{klass.seats_left ?? '—'} max</span>
               </div>
             </Field>
             {klass.mode === 'Both' && (
@@ -467,13 +550,23 @@ const BookingModal = ({ klass, onClose, accent }) => {
               <span>{form.seats} × {inr(klass.price)}</span>
               <strong style={{ fontFamily: 'var(--cc-font-serif)', fontSize: 17 }}>{inr(total)}</strong>
             </div>
-            <button type="submit" style={{
+            <button type="submit" disabled={submitting} style={{
               width: '100%', height: 52, marginTop: 16, borderRadius: 999, border: 'none',
-              background: '#25D366', color: '#ffffff', fontFamily: 'var(--cc-font-sans)', fontSize: 15, fontWeight: 600, cursor: 'pointer',
+              background: submitting ? '#a0d8b3' : '#25D366', color: '#ffffff',
+              fontFamily: 'var(--cc-font-sans)', fontSize: 15, fontWeight: 600,
+              cursor: submitting ? 'not-allowed' : 'pointer',
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
             }}>
-              <WhatsAppIcon size={18}/> Send booking request
+              <WhatsAppIcon size={18}/> {submitting ? 'Sending...' : 'Send booking request'}
             </button>
+            {submitError && (
+              <div style={{
+                marginTop: 10, fontFamily: 'var(--cc-font-sans)', fontSize: 13,
+                color: '#c0392b', textAlign: 'center',
+              }}>
+                {submitError}
+              </div>
+            )}
           </form>
         )}
 
