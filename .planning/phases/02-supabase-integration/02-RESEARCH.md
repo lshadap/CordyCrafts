@@ -373,7 +373,7 @@ npx supabase db push
 
 - **Opening wa.me before checking INSERT error:** The WhatsApp link MUST be inside the `if (!error)` branch. The only reason Phase 2 exists is this guard.
 - **Calling `.select()` after `.insert()` unnecessarily:** We do not need the inserted row's ID. Omit `.select()` on orders/bookings INSERT — it also creates additional RLS surface that the anon role cannot SELECT.
-- **`import { supabase } from './lib/supabase.js'` in any file other than hooks:** Supabase client flows from `src/lib/supabase.js` only. Hooks import from there and components import from hooks.
+- **`import { supabase } from './lib/supabase.js'` in any file other than hooks:** Supabase client flows from `src/lib/supabase.js` only. Hooks import from there and components import from hooks. (ACCEPTED DEVIATION: sections.jsx imports but does not initialise the client — see CONTEXT.md Claude's Discretion.)
 - **Hardcoding the WhatsApp number:** Always `import.meta.env.VITE_WHATSAPP_NUMBER`.
 - **Using `window.location.href` for wa.me:** Opens WhatsApp by navigating away. Use `window.open(..., '_blank')` so the SPA stays loaded.
 - **Logging errors to console:** CLAUDE.md and project conventions prohibit `console.log` / `console.warn`. The error state is communicated via React state only.
@@ -606,14 +606,19 @@ WA-01 and WA-02 are testable as pure functions: `buildOrderMessage(form, items, 
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Does BookingModal currently receive a `klass.id` field?**
+1. **Does BookingModal currently receive a `klass.id` field?** (RESOLVED)
+
+   **RESOLVED:** No, not currently. Plan 02 Task 3 replaces the hardcoded CLASSES array with `useClasses()` which returns Supabase rows that include `id` (uuid). BookingModal then receives `klass.id` via the Supabase row, and Plan 03 uses it as the FK in `bookings.class_id`.
+
    - What we know: The hardcoded CLASSES array in `products.jsx` has `sku` but no `id` field. After the Supabase migration, the `classes` table rows will have `id` (uuid). The `ClassesGrid` will need to pass Supabase rows (with `id`) through `onBook` to `BookingModal`.
    - What's unclear: The planner must ensure `ClassesGrid` replaces CLASSES with `useClasses()` data before `BookingModal` references `klass.id`.
    - Recommendation: Plan the ClassesGrid useClasses hook task before the BookingModal INSERT task — they are a dependency chain.
 
-2. **Should `supabase/seed.sql` use `INSERT` or `INSERT ... ON CONFLICT DO NOTHING`?**
+2. **Should `supabase/seed.sql` use `INSERT` or `INSERT ... ON CONFLICT DO NOTHING`?** (RESOLVED)
+
+   **RESOLVED:** Use `ON CONFLICT DO NOTHING` for idempotent seeding (locked in CONTEXT.md seed section and implemented in Plan 01 Task 2 — products use `ON CONFLICT (sku) DO NOTHING`, classes use `ON CONFLICT (name) DO NOTHING` after the unique constraint added in the migration).
    - What we know: If the developer runs the seed twice, plain INSERT will fail with duplicate PK.
    - Recommendation: Use `INSERT INTO products ... ON CONFLICT (sku) DO NOTHING;` for idempotent seeding. [ASSUMED — Supabase seed.sql is typically idempotent]
 

@@ -85,6 +85,10 @@ Notes: {message}
 - `wa.me/{number}?text={encodeURIComponent(message)}`
 - If `message` field is empty in bookings, omit the `Notes:` line
 
+### Claude's Discretion
+
+- **sections.jsx imports `{ supabase }` directly from `src/lib/supabase.js`** for the order/booking submit handlers. This satisfies CLAUDE.md's "never initialised elsewhere" constraint because `createClient()` is only called in `supabase.js` — importing the already-created client reference is NOT initialisation. No intermediate hook layer is needed for simplicity at this scale.
+
 ## Table Schema Reference
 
 ### `products`

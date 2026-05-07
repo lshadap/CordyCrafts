@@ -65,7 +65,26 @@ Plans:
   3. Submitting the class booking form writes a `bookings` row (with payment_status='pending') to Supabase, then opens the pre-filled wa.me link — same guard as above
   4. The WhatsApp message includes item names, quantities, ₹ totals, and customer name for orders; class name, date/time, seats, mode, and customer name for bookings — number is always from VITE_WHATSAPP_NUMBER
   5. An unauthenticated anon client can INSERT to orders and bookings but cannot SELECT, UPDATE, or DELETE any row
-**Plans**: TBD
+**Plans**: 4 plans across 4 waves
+Plans:
+
+**Wave 0** (test infrastructure):
+- [ ] 02-00-PLAN.md — whatsapp.test.js (RED stub for WA-01/02/03) + supabase.test.js (GREEN guard pattern for SUPA-04/05)
+
+**Wave 1** *(runs parallel to Wave 0)*:
+- [ ] 02-01-PLAN.md — supabase/migrations/...sql (4 tables + RLS + 4 policies) + supabase/seed.sql (12 products + 8 classes) + manual schema push
+
+**Wave 2** *(blocked on Waves 0 + 1 completion)*:
+- [ ] 02-02-PLAN.md — src/lib/whatsapp.js + src/hooks/useProducts.js + src/hooks/useClasses.js + src/products.jsx wired to live data with field renames
+
+**Wave 3** *(blocked on Wave 2 completion)*:
+- [ ] 02-03-PLAN.md — src/sections.jsx CartDrawer + BookingModal: async INSERT-then-WhatsApp guards with inline red error UX + manual browser verification
+
+**Cross-cutting constraints:**
+- Supabase client initialized only in `src/lib/supabase.js` — never in any other file (SUPA-01)
+- `payment_status='pending'` on every INSERT to orders and bookings (all 4 waves)
+- Supabase write MUST complete before wa.me link opens — on error, link is never opened (SUPA-04, SUPA-05)
+- `VITE_WHATSAPP_NUMBER` always from `import.meta.env` — never hardcoded (WA-03)
 **UI hint**: yes
 
 ### Phase 3: Mobile Polish
