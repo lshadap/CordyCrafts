@@ -97,7 +97,21 @@ Plans:
   3. While products are loading from Supabase, skeleton cards are visible in place of real cards (no blank white space or layout shift)
   4. While classes are loading from Supabase, skeleton cards are visible in place of real cards
   5. Each page has a distinct `<title>` and `<meta name="description">`, and the home page has og:title, og:description, and og:image tags
-**Plans**: TBD
+**Plans**: 3 plans across 2 waves
+Plans:
+
+**Wave 1** *(parallel — independent files)*:
+- [ ] 03-01-PLAN.md — src/hooks/useBreakpoint.js — viewport breakpoint hook (mobile/tablet/desktop)
+- [ ] 03-03-PLAN.md — index.html — SEO/OG/Twitter meta tags + @keyframes shimmer style block
+
+**Wave 2** *(blocked on Wave 1 completion)*:
+- [ ] 03-02-PLAN.md — src/products.jsx — responsive columns + shimmer skeleton loading for ProductGrid and ClassesGrid
+
+**Cross-cutting constraints:**
+- No new CSS files — @keyframes shimmer is the only CSS outside JS inline styles (CLAUDE.md)
+- No component rewrites — ProductGrid and ClassesGrid are modified in-place (CLAUDE.md)
+- useBreakpoint must be called before any conditional return in components (React rules-of-hooks)
+- Skeleton counts: 12 product cards, 8 class cards (D-04)
 **UI hint**: yes
 
 ### Phase 4: Vercel Deploy
@@ -120,5 +134,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Vite Scaffold | 7/7 | Complete | 2026-05-07 |
 | 2. Supabase Integration | 4/4 | Complete | 2026-05-07 |
-| 3. Mobile Polish | 0/? | Not started | - |
+| 3. Mobile Polish | 0/3 | Not started | - |
 | 4. Vercel Deploy | 0/? | Not started | - |
