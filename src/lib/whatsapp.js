@@ -23,6 +23,7 @@ export function buildBookingMessage(form, klass) {
   const lines = [
     'New Booking',
     `Class: ${klass.name}`,
+    ...(klass.date_label ? [`Date: ${klass.date_label}`] : []),
     `Name: ${form.name}`,
     `Phone: ${form.phone}`,
     `Seats: ${form.seats}`,

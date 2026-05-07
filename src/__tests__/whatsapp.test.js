@@ -38,7 +38,7 @@ describe('buildOrderMessage — WA-01', () => {
   })
 })
 
-const bookingKlass = { id: 'uuid-abc-123', name: 'Card Making with Stamps' }
+const bookingKlass = { id: 'uuid-abc-123', name: 'Card Making with Stamps', date_label: 'Sat 23 May 2026' }
 const bookingFormBase = { name: 'Priya', phone: '9876543210', seats: 2, pref: 'Online', note: '' }
 
 describe('buildBookingMessage — WA-02', () => {
@@ -47,6 +47,13 @@ describe('buildBookingMessage — WA-02', () => {
   })
   it('contains class name line', () => {
     expect(buildBookingMessage(bookingFormBase, bookingKlass)).toContain('Class: Card Making with Stamps')
+  })
+  it('contains date line when date_label is present', () => {
+    expect(buildBookingMessage(bookingFormBase, bookingKlass)).toContain('Date: Sat 23 May 2026')
+  })
+  it('omits date line when date_label is absent', () => {
+    const klassNoDate = { id: 'uuid-abc-123', name: 'Card Making with Stamps' }
+    expect(buildBookingMessage(bookingFormBase, klassNoDate)).not.toContain('Date:')
   })
   it('contains customer name line', () => {
     expect(buildBookingMessage(bookingFormBase, bookingKlass)).toContain('Name: Priya')
