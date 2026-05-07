@@ -12,7 +12,7 @@ Migrate the existing Claude Design CDN prototype into a production-ready Vite 5 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Vite Scaffold** - Migrate the CDN prototype into a buildable Vite 5 + React project without rewriting any components
+- [x] **Phase 1: Vite Scaffold** - Migrate the CDN prototype into a buildable Vite 5 + React project without rewriting any components
 - [ ] **Phase 2: Supabase Integration** - Wire live data, write orders/bookings to Supabase before WhatsApp link opens, enable RLS
 - [ ] **Phase 3: Mobile Polish** - Responsive grid layouts, loading skeletons, and SEO/OG meta tags
 - [ ] **Phase 4: Vercel Deploy** - Connect GitHub to Vercel, set env vars, verify production, write setup docs
@@ -40,14 +40,14 @@ Plans:
 - [x] 01-02-PLAN.md — CartContext (useReducer + localStorage) and src/lib/supabase.js stub
 
 **Wave 2** *(blocked on Wave 1 completion)*:
-- [ ] 01-03-PLAN.md — Migrate src/primitives.jsx and src/hero.jsx as ES modules
-- [ ] 01-04-PLAN.md — Migrate src/products.jsx as ES module (delete cart store, fix exports)
+- [x] 01-03-PLAN.md — Migrate src/primitives.jsx and src/hero.jsx as ES modules
+- [x] 01-04-PLAN.md — Migrate src/products.jsx as ES module (delete cart store, fix exports)
 
 **Wave 3** *(blocked on Wave 2 completion)*:
-- [ ] 01-05-PLAN.md — Migrate src/sections.jsx as ES module (import inr, useCartContext)
+- [x] 01-05-PLAN.md — Migrate src/sections.jsx as ES module (import inr, useCartContext)
 
 **Wave 4** *(blocked on Wave 3 completion)*:
-- [ ] 01-06-PLAN.md — Wire src/App.jsx and src/main.jsx; env validation; visual verify
+- [x] 01-06-PLAN.md — Wire src/App.jsx and src/main.jsx; env validation; visual verify
 
 **Cross-cutting constraints:**
 - All 4 Claude Design files must have zero component rewrites (SCAF-02, CLAUDE.md)
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Vite Scaffold | 3/7 | In progress | - |
+| 1. Vite Scaffold | 7/7 | Complete | 2026-05-07 |
 | 2. Supabase Integration | 0/? | Not started | - |
 | 3. Mobile Polish | 0/? | Not started | - |
 | 4. Vercel Deploy | 0/? | Not started | - |

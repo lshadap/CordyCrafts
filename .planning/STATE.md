@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-05-06)
 
 **Core value:** A customer on a phone can browse the full catalogue, add items to cart, and place an order that lands in Cordeelia's WhatsApp — all in under a minute.
-**Current focus:** Phase 1 — Vite Scaffold
+**Current focus:** Phase 2 — Supabase Integration
 
 ## Current Position
 
-Phase: 1 of 4 (Vite Scaffold)
-Plan: 3 of 7 in current phase
-Status: Executing — Phase 1 in progress (Wave 1 complete, Wave 2 next)
-Last activity: 2026-05-07 — Plans 01-01 and 01-02 complete
+Phase: 2 of 4 (Supabase Integration)
+Plan: 0 of ? in current phase
+Status: Phase 1 complete — Phase 2 not yet planned
+Last activity: 2026-05-07 — Phase 1 fully complete, human-verified
 
-Progress: [███░░░░░░░] 43%
+Progress: [██████████] Phase 1 100% · Overall 25%
 
 ## Performance Metrics
 
@@ -67,6 +67,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-07T05:06:07Z
-Stopped at: 01-00 complete — Wave 1 ready (01-01 and 01-02 can run in parallel)
-Resume file: .planning/phases/01-vite-scaffold/01-01-PLAN.md
+Last session: 2026-05-07
+Stopped at: Phase 1 complete — all 7 plans done, human-verified
+Resume file: .planning/phases/02-supabase-integration/ (plan-phase 2 next)
