@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 
 **Wave 0** (test infrastructure):
-- [ ] 01-00-PLAN.md — Install vitest/jsdom, create CartContext.test.jsx and main.test.jsx stubs
+- [x] 01-00-PLAN.md — Install vitest/jsdom, create CartContext.test.jsx and main.test.jsx stubs
 
 **Wave 1** *(parallel — independent files)*:
 - [ ] 01-01-PLAN.md — Vite scaffold: package.json, vite.config.js, index.html rewrite, vercel.json, .env.example, assets to public/
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Vite Scaffold | 0/6 | Not started | - |
+| 1. Vite Scaffold | 1/7 | In progress | - |
 | 2. Supabase Integration | 0/? | Not started | - |
 | 3. Mobile Polish | 0/? | Not started | - |
 | 4. Vercel Deploy | 0/? | Not started | - |

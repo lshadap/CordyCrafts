@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 ## Current Position
 
 Phase: 1 of 4 (Vite Scaffold)
-Plan: 0 of 7 in current phase
-Status: Ready to execute
-Last activity: 2026-05-07 — Phase 1 planned (7 plans across 5 waves)
+Plan: 1 of 7 in current phase
+Status: Executing — Phase 1 in progress (01-00 complete, Wave 1 next)
+Last activity: 2026-05-07 — Plan 01-00 complete
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 14%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 5 min
+- Total execution time: 0.08 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-vite-scaffold | 1 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: -
+- Last 5 plans: 01-00 (5 min)
 - Trend: -
 
 *Updated after each plan completion*
@@ -46,6 +46,8 @@ Recent decisions affecting current work:
 - `vercel.json` committed in Phase 1 (not Phase 4) — must be present before first accidental push to main
 - Supabase write MUST complete before wa.me link opens — failed write = no WhatsApp redirect
 - RLS INSERT-only policies on orders/bookings set before any live data flows in Phase 2
+- 01-00: Minimal package.json created in Wave 0 (no vite dep) — Plan 01-01 extends it; npm install is idempotent
+- 01-00: CartContext tests import cartReducer directly — Plan 02 must export cartReducer for tests to resolve
 
 ### Pending Todos
 
@@ -65,6 +67,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-07
-Stopped at: Phase 1 planned — 7 plans ready for execution
-Resume file: .planning/phases/01-vite-scaffold/ (*-PLAN.md)
+Last session: 2026-05-07T05:06:07Z
+Stopped at: 01-00 complete — Wave 1 ready (01-01 and 01-02 can run in parallel)
+Resume file: .planning/phases/01-vite-scaffold/01-01-PLAN.md
