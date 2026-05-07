@@ -2,87 +2,11 @@
 import React from 'react'
 import { useCartContext } from './CartContext.jsx'
 import { Icon, CircleBadge, Overline, Button } from './primitives.jsx'
+import { useProducts } from './hooks/useProducts.js'
+import { useClasses } from './hooks/useClasses.js'
 
 // ======== Currency =========
 const inr = (n) => '₹' + n.toLocaleString('en-IN');
-
-// ======== Products (handmade, ₹ INR) =========
-const PRODUCTS = [
-  { sku: 'p01', name: 'Stamped Birthday Card',     cat: 'Paper Crafts', price: 180,  img: '/assets/products/amigurumi-bear.svg', tag: 'Bestseller', accent: true, blurb: 'Hand-stamped on cotton card · A6' },
-  { sku: 'p02', name: 'Quilled Floral Frame',      cat: 'Paper Crafts', price: 1450, img: '/assets/products/scarf.svg',          tag: 'Framed',     blurb: 'Paper quilling · 6×8 in shadow box' },
-  { sku: 'p03', name: 'Iris-Folded Card Set',      cat: 'Paper Crafts', price: 420,  img: '/assets/products/market-bag.svg',     blurb: 'Set of 3 · iris-folded geometric' },
-  { sku: 'p04', name: 'Paper Embroidery Hoop',     cat: 'Paper Crafts', price: 980,  img: '/assets/products/tote.svg',           tag: 'New',        blurb: '4-inch hoop · stitched on cardstock' },
-
-  { sku: 'c01', name: 'Air-Dry Clay Trinket Dish', cat: 'Clay',         price: 540,  img: '/assets/products/coaster-set.svg',    tag: 'Set of 2', accent: true, blurb: 'Marbled · sealed matte finish' },
-  { sku: 'c02', name: 'Polymer Daisy Earrings',    cat: 'Clay',         price: 380,  img: '/assets/products/amigurumi-bunny.svg', blurb: 'Hypoallergenic posts · 2cm' },
-  { sku: 'c03', name: 'Heart Pendant',             cat: 'Clay',         price: 320,  img: '/assets/products/blanket.svg',         blurb: 'Polymer clay · 18in chain' },
-  { sku: 'c04', name: 'Mini Planter (set of 3)',   cat: 'Clay',         price: 1200, img: '/assets/products/cardigan.svg',        tag: 'Made to order', blurb: 'Air-dry clay · pastel trio' },
-
-  { sku: 'k01', name: 'Rose Garden Soy Candle',    cat: 'Candles',      price: 650,  img: '/assets/products/beanie.svg',          blurb: 'Soy wax · 200g · cotton wick' },
-  { sku: 'k02', name: 'Vanilla Bean Pillar',       cat: 'Candles',      price: 780,  img: '/assets/products/mug-cozy.svg',        accent: true, blurb: 'Hand-poured · 50hr burn' },
-  { sku: 'k03', name: 'Citrus Tin Travel Candle',  cat: 'Candles',      price: 320,  img: '/assets/products/granny-pillow.svg',   blurb: 'Tin · 80g · travel-safe' },
-  { sku: 'k04', name: 'Lavender & Honey 3-wick',   cat: 'Candles',      price: 1480, img: '/assets/products/plant-hanger.svg',    tag: 'Low stock', blurb: 'Beeswax blend · jar · 400g' },
-];
-
-// ======== Classes / Events =========
-const CLASSES = [
-  {
-    sku: 'cls01', name: 'Card Making with Stamps & Stencils',
-    craft: 'Paper Crafts', mode: 'Both', location: 'HSR Layout, Bengaluru',
-    date: 'Sat 23 May 2026', time: '11:00 AM IST',
-    duration: '2.5 hrs', price: 1200, seats: 8, blurb: 'Make 4 keepsake cards. All supplies included.',
-    img: '/assets/products/amigurumi-bear.svg',
-  },
-  {
-    sku: 'cls02', name: 'Quilling 101: Floral Frames',
-    craft: 'Paper Crafts', mode: 'Online',
-    date: 'Sun 31 May 2026', time: '6:00 PM IST',
-    duration: '2 hrs', price: 900, seats: 14, blurb: 'Live on Zoom · kit posted before class.',
-    img: '/assets/products/scarf.svg',
-  },
-  {
-    sku: 'cls03', name: 'Iris Folding Workshop',
-    craft: 'Paper Crafts', mode: 'Offline', location: 'HSR Layout, Bengaluru',
-    date: 'Sat 13 Jun 2026', time: '4:00 PM IST',
-    duration: '3 hrs', price: 1500, seats: 6, blurb: 'Take home 2 framed iris-folded pieces.',
-    img: '/assets/products/market-bag.svg',
-  },
-  {
-    sku: 'cls04', name: 'Polymer Clay Earrings',
-    craft: 'Clay', mode: 'Both', location: 'HSR Layout, Bengaluru',
-    date: 'Sun 7 Jun 2026', time: '11:00 AM IST',
-    duration: '3 hrs', price: 1800, seats: 8, blurb: 'Sculpt, bake, and finish two pairs.',
-    img: '/assets/products/amigurumi-bunny.svg',
-  },
-  {
-    sku: 'cls05', name: 'Air-Dry Clay Pottery (Beginners)',
-    craft: 'Clay', mode: 'Offline', location: 'HSR Layout, Bengaluru',
-    date: 'Flexible / On Request', time: '—',
-    duration: '4 hrs', price: 2200, seats: 6, blurb: 'Trinket dishes & planters. Group of 3+ to book.',
-    img: '/assets/products/coaster-set.svg',
-  },
-  {
-    sku: 'cls06', name: 'Hand-Poured Soy Candles',
-    craft: 'Candles', mode: 'Online',
-    date: 'Sat 30 May 2026', time: '5:00 PM IST',
-    duration: '2 hrs', price: 1400, seats: 12, blurb: 'Live on Zoom · DIY kit posted before class.',
-    img: '/assets/products/beanie.svg',
-  },
-  {
-    sku: 'cls07', name: 'Beeswax Pillar Workshop',
-    craft: 'Candles', mode: 'Offline', location: 'HSR Layout, Bengaluru',
-    date: 'Sun 21 Jun 2026', time: '11:00 AM IST',
-    duration: '3 hrs', price: 1900, seats: 8, blurb: 'Pour, scent, and decorate 2 pillars to take home.',
-    img: '/assets/products/mug-cozy.svg',
-  },
-  {
-    sku: 'cls08', name: 'Paper Embroidery Mini',
-    craft: 'Paper Crafts', mode: 'Online',
-    date: 'Flexible / On Request', time: '—',
-    duration: '1.5 hrs', price: 700, seats: 20, blurb: 'Stitch a 4in hoop on cardstock. 1:1 sessions available.',
-    img: '/assets/products/tote.svg',
-  },
-];
 
 // ======== Product card =========
 const ProductCard = ({ p, accent }) => {
@@ -90,7 +14,7 @@ const ProductCard = ({ p, accent }) => {
   const [hover, setHover] = React.useState(false);
   const [added, setAdded] = React.useState(false);
   const onAdd = () => {
-    c.add({ sku: p.sku, name: p.name, price: p.price, img: p.img, cat: p.cat, qty: 1 });
+    c.add({ sku: p.sku, name: p.name, price: p.price, img: p.img, cat: p.category, qty: 1 });
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
   };
@@ -125,7 +49,7 @@ const ProductCard = ({ p, accent }) => {
         )}
       </div>
       <div style={{ padding: '18px 18px 20px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <Overline>{p.cat}</Overline>
+        <Overline>{p.category}</Overline>
         <h4 style={{
           fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: 18,
           margin: 0, color: '#3a2a2a', lineHeight: 1.25,
@@ -154,9 +78,11 @@ const ProductCard = ({ p, accent }) => {
 };
 
 const ProductGrid = ({ accent }) => {
+  const { products, loading } = useProducts();
   const [filter, setFilter] = React.useState('All');
+  if (loading) return null;
   const cats = ['All', 'Paper Crafts', 'Clay', 'Candles'];
-  const items = filter === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
+  const items = filter === 'All' ? products : products.filter(p => p.category === filter);
   return (
     <section id="shop" style={{ background: '#fffafa', padding: '120px 40px' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -192,7 +118,7 @@ const ProductGrid = ({ accent }) => {
           {items.map(p => <ProductCard key={p.sku} p={p} accent={accent}/>)}
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 56 }}>
-          <Button variant="white" size="lg">View all {PRODUCTS.length} pieces <Icon name="arrowRight" size={16} stroke={1.7}/></Button>
+          <Button variant="white" size="lg">View all {products.length} pieces <Icon name="arrowRight" size={16} stroke={1.7}/></Button>
         </div>
       </div>
     </section>
@@ -220,20 +146,20 @@ const ClassCard = ({ k, accent, onBook }) => {
         }}>{k.mode === 'Both' ? 'Online + Offline' : k.mode}</span>
       </div>
       <div style={{ padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <Overline>{k.craft} · Workshop</Overline>
+        <Overline>{k.category} · Workshop</Overline>
         <h4 style={{
           fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: 20,
           margin: 0, color: '#3a2a2a', lineHeight: 1.25,
         }}>{k.name}</h4>
-        <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 13, color: '#7a5a5a', lineHeight: 1.5 }}>{k.blurb}</div>
+        <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 13, color: '#7a5a5a', lineHeight: 1.5 }}>{k.subtitle}</div>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px',
           marginTop: 6, fontFamily: 'var(--cc-font-sans)', fontSize: 12.5, color: '#5a3a3a',
         }}>
-          <div><span style={{ color: '#a85050' }}>When · </span>{k.date}{k.time !== '—' ? ` · ${k.time}` : ''}</div>
+          <div><span style={{ color: '#a85050' }}>When · </span>{k.date_label}</div>
           <div><span style={{ color: '#a85050' }}>Duration · </span>{k.duration}</div>
-          <div><span style={{ color: '#a85050' }}>Where · </span>{k.mode === 'Online' ? 'Live on Zoom' : (k.location || 'Studio')}</div>
-          <div><span style={{ color: '#a85050' }}>Seats · </span>{k.seats} max</div>
+          <div><span style={{ color: '#a85050' }}>Where · </span>{k.mode === 'Online' ? 'Live on Zoom' : 'Studio'}</div>
+          <div><span style={{ color: '#a85050' }}>Seats · </span>{k.seats_left} max</div>
         </div>
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -257,12 +183,14 @@ const ClassCard = ({ k, accent, onBook }) => {
 };
 
 const ClassesGrid = ({ accent, onBook }) => {
+  const { classes, loading } = useClasses();
   const [filter, setFilter] = React.useState('All');
+  if (loading) return null;
   const filters = ['All', 'Paper Crafts', 'Clay', 'Candles', 'Online', 'Offline'];
-  const items = CLASSES.filter(k =>
+  const items = classes.filter(k =>
     filter === 'All' ? true :
     (filter === 'Online' || filter === 'Offline') ? (k.mode === filter || k.mode === 'Both') :
-    k.craft === filter
+    k.category === filter
   );
   return (
     <section id="classes" style={{ background: '#fce4e4', padding: '120px 40px' }}>
@@ -301,11 +229,11 @@ const ClassesGrid = ({ accent, onBook }) => {
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
-          {items.map(k => <ClassCard key={k.sku} k={k} accent={accent} onBook={onBook}/>)}
+          {items.map(k => <ClassCard key={k.id} k={k} accent={accent} onBook={onBook}/>)}
         </div>
       </div>
     </section>
   );
 };
 
-export { ProductGrid, ProductCard, ClassesGrid, ClassCard, inr, PRODUCTS, CLASSES }
+export { ProductGrid, ProductCard, ClassesGrid, ClassCard, inr }
