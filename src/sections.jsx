@@ -501,7 +501,7 @@ const BookingModal = ({ klass, onClose, accent }) => {
             <Overline>Book a class</Overline>
             <div style={{ fontFamily: 'var(--cc-font-serif)', fontSize: 22, color: '#3a2a2a', marginTop: 4, lineHeight: 1.2 }}>{klass.name}</div>
             <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 12.5, color: '#7a5a5a', marginTop: 6 }}>
-              {klass.date}{klass.time !== '—' ? ` · ${klass.time}` : ''} · {klass.duration} · {inr(klass.price)}/person
+              {klass.date_label} · {klass.duration} · {inr(klass.price)}/person
             </div>
           </div>
           <button onClick={onClose} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#7a5a5a', fontSize: 22 }}>×</button>
