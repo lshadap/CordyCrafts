@@ -11,8 +11,8 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 
 Phase: 2 of 4 (Supabase Integration)
 Plan: 4 of 4 in current phase
-Status: Phase 2 complete ✓ — verified 2026-05-07
-Last activity: 2026-05-07 — Phase 2 passed; all 10 must-haves verified, browser UAT approved
+Status: Phase 2 complete ✓ — UAT passed 2026-05-07 (9/9 tests)
+Last activity: 2026-05-07 — Phase 2 UAT complete; all 9 tests passed, human-verified
 
 Progress: [██████████] Phase 1 100% · [██████████] Phase 2 100% · Overall 50%
 
