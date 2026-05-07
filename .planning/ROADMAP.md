@@ -29,7 +29,14 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Cart add/remove/quantity operations work using CartContext — no window.cart, window.openCart, or window.cartCount globals remain
   4. Missing any of the three env vars causes the app to throw a loud startup error listing the missing variable(s)
   5. `vercel.json` with SPA rewrite rule is present in the repository root
-**Plans**: TBD
+**Plans**: 6 plans
+Plans:
+- [ ] 01-01-PLAN.md — Vite scaffold: package.json, vite.config.js, index.html rewrite, vercel.json, .env.example, assets to public/
+- [ ] 01-02-PLAN.md — CartContext (useReducer + localStorage) and src/lib/supabase.js stub
+- [ ] 01-03-PLAN.md — Migrate src/primitives.jsx and src/hero.jsx as ES modules
+- [ ] 01-04-PLAN.md — Migrate src/products.jsx as ES module (delete cart store, fix exports)
+- [ ] 01-05-PLAN.md — Migrate src/sections.jsx as ES module (import inr, useCartContext)
+- [ ] 01-06-PLAN.md — Wire src/App.jsx and src/main.jsx; env validation; visual verify
 **UI hint**: yes
 
 ### Phase 2: Supabase Integration
@@ -76,7 +83,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Vite Scaffold | 0/? | Not started | - |
+| 1. Vite Scaffold | 0/6 | Not started | - |
 | 2. Supabase Integration | 0/? | Not started | - |
 | 3. Mobile Polish | 0/? | Not started | - |
 | 4. Vercel Deploy | 0/? | Not started | - |
