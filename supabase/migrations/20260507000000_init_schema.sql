@@ -30,6 +30,7 @@ create table if not exists classes (
   id          uuid primary key default gen_random_uuid(),
   name        text not null unique,
   subtitle    text,
+  category    text,
   price       integer not null,
   img         text not null,
   date_label  text,
