@@ -36,8 +36,8 @@ Plans:
 - [x] 01-00-PLAN.md — Install vitest/jsdom, create CartContext.test.jsx and main.test.jsx stubs
 
 **Wave 1** *(parallel — independent files)*:
-- [ ] 01-01-PLAN.md — Vite scaffold: package.json, vite.config.js, index.html rewrite, vercel.json, .env.example, assets to public/
-- [ ] 01-02-PLAN.md — CartContext (useReducer + localStorage) and src/lib/supabase.js stub
+- [x] 01-01-PLAN.md — Vite scaffold: package.json, vite.config.js, index.html rewrite, vercel.json, .env.example, assets to public/
+- [x] 01-02-PLAN.md — CartContext (useReducer + localStorage) and src/lib/supabase.js stub
 
 **Wave 2** *(blocked on Wave 1 completion)*:
 - [ ] 01-03-PLAN.md — Migrate src/primitives.jsx and src/hero.jsx as ES modules
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Vite Scaffold | 1/7 | In progress | - |
+| 1. Vite Scaffold | 3/7 | In progress | - |
 | 2. Supabase Integration | 0/? | Not started | - |
 | 3. Mobile Polish | 0/? | Not started | - |
 | 4. Vercel Deploy | 0/? | Not started | - |
