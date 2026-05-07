@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 ## Current Position
 
 Phase: 2 of 4 (Supabase Integration)
-Plan: 3 of 4 in current phase
-Status: Phase 2 executing — Waves 0+1+2 complete, proceeding to Wave 3
-Last activity: 2026-05-07 — 02-02 done; whatsapp.js GREEN, hooks created, ProductGrid/ClassesGrid wired to Supabase
+Plan: 4 of 4 in current phase
+Status: Phase 2 all waves complete — running verification
+Last activity: 2026-05-07 — 02-03 browser-verified; orders/bookings INSERT guard + WhatsApp redirect confirmed
 
 Progress: [██████████] Phase 1 100% · Overall 25%
 

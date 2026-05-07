@@ -64,7 +64,7 @@ completed: "2026-05-07"
 - **Duration:** ~15 min
 - **Started:** 2026-05-07T19:20:00Z
 - **Completed:** 2026-05-07T19:35:00Z (Tasks 1-2 complete; Task 3 awaiting human verification)
-- **Tasks:** 2 of 3 complete (Task 3 is a blocking human-verify checkpoint)
+- **Tasks:** 3 of 3 complete (Task 3 browser verification: PASSED 2026-05-07)
 - **Files modified:** 1
 
 ## Accomplishments
@@ -154,4 +154,4 @@ grep -n "console\." src/sections.jsx  # returns: no matches
 
 ---
 *Phase: 02-supabase-integration*
-*Completed: 2026-05-07 (Tasks 1-2 done; Task 3 pending human verification)*
+*Completed: 2026-05-07 — all 3 tasks done, browser verification passed*

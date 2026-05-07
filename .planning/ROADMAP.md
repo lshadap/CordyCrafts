@@ -78,7 +78,7 @@ Plans:
 - [x] 02-02-PLAN.md — src/lib/whatsapp.js + src/hooks/useProducts.js + src/hooks/useClasses.js + src/products.jsx wired to live data with field renames
 
 **Wave 3** *(blocked on Wave 2 completion)*:
-- [ ] 02-03-PLAN.md — src/sections.jsx CartDrawer + BookingModal: async INSERT-then-WhatsApp guards with inline red error UX + manual browser verification
+- [x] 02-03-PLAN.md — src/sections.jsx CartDrawer + BookingModal: async INSERT-then-WhatsApp guards with inline red error UX + manual browser verification
 
 **Cross-cutting constraints:**
 - Supabase client initialized only in `src/lib/supabase.js` — never in any other file (SUPA-01)
