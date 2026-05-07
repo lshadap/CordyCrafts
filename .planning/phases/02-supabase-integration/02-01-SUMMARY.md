@@ -24,7 +24,7 @@ metrics:
   completed_date: "2026-05-07"
   tasks_completed: 2
   tasks_total: 3
-  tasks_pending_checkpoint: 1
+  tasks_pending_checkpoint: 0
 ---
 
 # Phase 2 Plan 01: SQL Schema + Seed Summary
@@ -38,33 +38,11 @@ metrics:
 | 1 | Author supabase/migrations/20260507000000_init_schema.sql | 2689889 | supabase/migrations/20260507000000_init_schema.sql |
 | 2 | Author supabase/seed.sql | eb9f367 | supabase/seed.sql |
 
-## Pending Checkpoint (Task 3)
+## Checkpoint (Task 3)
 
-**Status: AWAITING DEVELOPER ACTION**
+**Status: APPLIED — developer confirmed 2026-05-07**
 
-Task 3 is a `checkpoint:human-action` gate. Claude has authored all SQL files; the developer must manually apply them to the live Supabase project before Plans 02–04 can be runtime-verified.
-
-**What the developer needs to do:**
-
-Option A — Supabase CLI:
-```bash
-npx supabase login
-npx supabase link --project-ref <your-project-ref>
-npx supabase db push
-psql "postgresql://postgres:<password>@db.<your-project-ref>.supabase.co:5432/postgres" -f supabase/seed.sql
-```
-
-Option B — Supabase Dashboard SQL Editor (no CLI required):
-1. Paste `supabase/migrations/20260507000000_init_schema.sql` → Run
-2. Paste `supabase/seed.sql` → Run
-
-**Verification (Supabase Dashboard → Table Editor):**
-- 4 tables listed: products, classes, orders, bookings
-- products: 12 rows, classes: 8 rows, orders: 0 rows, bookings: 0 rows
-- RLS enabled on all 4 tables
-- policies: "public read products" (SELECT anon), "public read classes" (SELECT anon), "anon insert orders" (INSERT anon), "anon insert bookings" (INSERT anon)
-
-**Resume signal:** Reply `applied` (schema + seed verified) or `defer — I will apply manually before running execute-phase 03`.
+Schema and seed applied to live Supabase project via Dashboard SQL Editor. 4 tables created with RLS. 12 products + 8 classes seeded. Note: `ALTER TABLE classes ADD COLUMN category text` was required after initial migration (category column was missing from the original migration file — fixed in commit 59cee23).
 
 ## What Was Built
 

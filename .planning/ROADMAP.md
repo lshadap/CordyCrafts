@@ -72,7 +72,7 @@ Plans:
 - [x] 02-00-PLAN.md — whatsapp.test.js (RED stub for WA-01/02/03) + supabase.test.js (GREEN guard pattern for SUPA-04/05)
 
 **Wave 1** *(runs parallel to Wave 0)*:
-- [ ] 02-01-PLAN.md — supabase/migrations/...sql (4 tables + RLS + 4 policies) + supabase/seed.sql (12 products + 8 classes) + manual schema push
+- [x] 02-01-PLAN.md — supabase/migrations/...sql (4 tables + RLS + 4 policies) + supabase/seed.sql (12 products + 8 classes) + manual schema push
 
 **Wave 2** *(blocked on Waves 0 + 1 completion)*:
 - [ ] 02-02-PLAN.md — src/lib/whatsapp.js + src/hooks/useProducts.js + src/hooks/useClasses.js + src/products.jsx wired to live data with field renames
