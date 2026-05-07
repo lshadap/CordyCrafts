@@ -29,14 +29,30 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Cart add/remove/quantity operations work using CartContext — no window.cart, window.openCart, or window.cartCount globals remain
   4. Missing any of the three env vars causes the app to throw a loud startup error listing the missing variable(s)
   5. `vercel.json` with SPA rewrite rule is present in the repository root
-**Plans**: 6 plans
+**Plans**: 7 plans across 5 waves
 Plans:
+
+**Wave 0** (test infrastructure):
+- [ ] 01-00-PLAN.md — Install vitest/jsdom, create CartContext.test.jsx and main.test.jsx stubs
+
+**Wave 1** *(parallel — independent files)*:
 - [ ] 01-01-PLAN.md — Vite scaffold: package.json, vite.config.js, index.html rewrite, vercel.json, .env.example, assets to public/
 - [ ] 01-02-PLAN.md — CartContext (useReducer + localStorage) and src/lib/supabase.js stub
+
+**Wave 2** *(blocked on Wave 1 completion)*:
 - [ ] 01-03-PLAN.md — Migrate src/primitives.jsx and src/hero.jsx as ES modules
 - [ ] 01-04-PLAN.md — Migrate src/products.jsx as ES module (delete cart store, fix exports)
+
+**Wave 3** *(blocked on Wave 2 completion)*:
 - [ ] 01-05-PLAN.md — Migrate src/sections.jsx as ES module (import inr, useCartContext)
+
+**Wave 4** *(blocked on Wave 3 completion)*:
 - [ ] 01-06-PLAN.md — Wire src/App.jsx and src/main.jsx; env validation; visual verify
+
+**Cross-cutting constraints:**
+- All 4 Claude Design files must have zero component rewrites (SCAF-02, CLAUDE.md)
+- No window globals may remain after Wave 4 (SCAF-04)
+- CartContext API surface must match the original window.cart object exactly
 **UI hint**: yes
 
 ### Phase 2: Supabase Integration
