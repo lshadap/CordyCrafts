@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Vite Scaffold** - Migrate the CDN prototype into a buildable Vite 5 + React project without rewriting any components
 - [x] **Phase 2: Supabase Integration** - Wire live data, write orders/bookings to Supabase before WhatsApp link opens, enable RLS
-- [ ] **Phase 3: Mobile Polish** - Responsive grid layouts, loading skeletons, and SEO/OG meta tags
+- [x] **Phase 3: Mobile Polish** - Responsive grid layouts, loading skeletons, and SEO/OG meta tags
 - [ ] **Phase 4: Vercel Deploy** - Connect GitHub to Vercel, set env vars, verify production, write setup docs
 
 ## Phase Details
@@ -101,11 +101,11 @@ Plans:
 Plans:
 
 **Wave 1** *(parallel — independent files)*:
-- [ ] 03-01-PLAN.md — src/hooks/useBreakpoint.js — viewport breakpoint hook (mobile/tablet/desktop)
-- [ ] 03-03-PLAN.md — index.html — SEO/OG/Twitter meta tags + @keyframes shimmer style block
+- [x] 03-01-PLAN.md — src/hooks/useBreakpoint.js — viewport breakpoint hook (mobile/tablet/desktop)
+- [x] 03-03-PLAN.md — index.html — SEO/OG/Twitter meta tags + @keyframes shimmer style block
 
 **Wave 2** *(blocked on Wave 1 completion)*:
-- [ ] 03-02-PLAN.md — src/products.jsx — responsive columns + shimmer skeleton loading for ProductGrid and ClassesGrid
+- [x] 03-02-PLAN.md — src/products.jsx — responsive columns + shimmer skeleton loading for ProductGrid and ClassesGrid
 
 **Cross-cutting constraints:**
 - No new CSS files — @keyframes shimmer is the only CSS outside JS inline styles (CLAUDE.md)
@@ -134,5 +134,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Vite Scaffold | 7/7 | Complete | 2026-05-07 |
 | 2. Supabase Integration | 4/4 | Complete | 2026-05-07 |
-| 3. Mobile Polish | 0/3 | Ready to execute | - |
+| 3. Mobile Polish | 3/3 | Complete | 2026-05-08 |
 | 4. Vercel Deploy | 0/? | Not started | - |

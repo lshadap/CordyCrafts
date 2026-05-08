@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-05-06)
 
 **Core value:** A customer on a phone can browse the full catalogue, add items to cart, and place an order that lands in Cordeelia's WhatsApp — all in under a minute.
-**Current focus:** Phase 3 — Mobile Polish
+**Current focus:** Phase 4 — Vercel Deploy
 
 ## Current Position
 
-Phase: 3 of 4 (Mobile Polish)
-Plan: 0 of 3 in current phase
-Status: Ready to execute — 3 plans across 2 waves
-Last activity: 2026-05-07 — Phase 3 planned (3 plans: useBreakpoint hook, responsive grids + skeletons, SEO/OG meta tags)
+Phase: 4 of 4 (Vercel Deploy)
+Plan: 0 of ? in current phase
+Status: Phase 3 complete — ready to plan Phase 4
+Last activity: 2026-05-08 — Phase 3 executed (useBreakpoint hook, responsive grids + skeletons, SEO/OG meta tags)
 
-Progress: [██████████] Phase 1 100% · [██████████] Phase 2 100% · [░░░░░░░░░░] Phase 3 0% · Overall 50%
+Progress: [██████████] Phase 1 100% · [██████████] Phase 2 100% · [██████████] Phase 3 100% · [░░░░░░░░░░] Phase 4 0% · Overall 75%
 
 ## Performance Metrics
 
@@ -69,4 +69,4 @@ None yet.
 
 Last session: 2026-05-07
 Stopped at: Phase 3 planned — ready to execute
-Resume file: .planning/phases/03-mobile-polish/03-01-PLAN.md
+Resume file: .planning/phases/04-vercel-deploy/ (not yet planned)
