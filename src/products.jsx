@@ -86,9 +86,10 @@ const ProductGrid = ({ accent }) => {
   const [filter, setFilter] = React.useState('All');
   const bp = useBreakpoint()
   const cols = PRODUCT_COLS[bp]
+  const padding = bp === 'mobile' ? '60px 20px' : '120px 40px'
   if (loading) {
     return (
-      <section id="shop" style={{ background: '#fffafa', padding: '120px 40px' }}>
+      <section id="shop" style={{ background: '#fffafa', padding }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
             {Array.from({ length: 12 }).map((_, i) => (
@@ -107,7 +108,7 @@ const ProductGrid = ({ accent }) => {
   const cats = ['All', 'Paper Crafts', 'Clay', 'Candles'];
   const items = filter === 'All' ? products : products.filter(p => p.category === filter);
   return (
-    <section id="shop" style={{ background: '#fffafa', padding: '120px 40px' }}>
+    <section id="shop" style={{ background: '#fffafa', padding }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
@@ -149,7 +150,7 @@ const ProductGrid = ({ accent }) => {
 };
 
 // ======== Classes & Events =========
-const ClassCard = ({ k, accent, onBook }) => {
+const ClassCard = ({ k, accent, onBook, isMobile }) => {
   const [hover, setHover] = React.useState(false);
   return (
     <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
@@ -157,9 +158,9 @@ const ClassCard = ({ k, accent, onBook }) => {
         position: 'relative', background: '#ffffff', borderRadius: 12, overflow: 'hidden',
         boxShadow: hover ? '0 0 0 1px #f5a3a3, 0 14px 32px rgba(240,138,138,0.18)' : '0 0 0 1px #f5d3d3',
         transition: 'box-shadow 240ms var(--cc-ease-out)',
-        display: 'grid', gridTemplateColumns: '180px 1fr',
+        display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '180px 1fr',
       }}>
-      <div style={{ position: 'relative', background: '#fce4e4', minHeight: 200 }}>
+      <div style={{ position: 'relative', background: '#fce4e4', minHeight: isMobile ? 160 : 200 }}>
         <img src={k.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}/>
         <span style={{
           position: 'absolute', top: 12, left: 12,
@@ -210,9 +211,11 @@ const ClassesGrid = ({ accent, onBook }) => {
   const [filter, setFilter] = React.useState('All');
   const bp = useBreakpoint()
   const cols = CLASS_COLS[bp]
+  const isMobile = bp !== 'desktop'
+  const padding = bp === 'mobile' ? '60px 20px' : '120px 40px'
   if (loading) {
     return (
-      <section id="classes" style={{ background: '#fce4e4', padding: '120px 40px' }}>
+      <section id="classes" style={{ background: '#fce4e4', padding }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
             {Array.from({ length: 8 }).map((_, i) => (
@@ -235,7 +238,7 @@ const ClassesGrid = ({ accent, onBook }) => {
     k.category === filter
   );
   return (
-    <section id="classes" style={{ background: '#fce4e4', padding: '120px 40px' }}>
+    <section id="classes" style={{ background: '#fce4e4', padding }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
@@ -271,7 +274,7 @@ const ClassesGrid = ({ accent, onBook }) => {
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
-          {items.map(k => <ClassCard key={k.id} k={k} accent={accent} onBook={onBook}/>)}
+          {items.map(k => <ClassCard key={k.id} k={k} accent={accent} onBook={onBook} isMobile={isMobile}/>)}
         </div>
       </div>
     </section>

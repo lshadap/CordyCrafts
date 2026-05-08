@@ -2,75 +2,85 @@
 import React from 'react'
 import { Icon, Logo, Button, Overline, CircleBadge, HeartMark } from './primitives.jsx'
 import { useCartContext } from './CartContext.jsx'
+import { useBreakpoint } from './hooks/useBreakpoint.js'
 import { inr } from './products.jsx'
 import { supabase } from './lib/supabase.js'
 import { buildOrderMessage, buildBookingMessage, buildWaUrl } from './lib/whatsapp.js'
 
-const About = ({ accent }) => (
-  <section id="about" style={{ background: '#3a2a2a', color: '#fce4e4', borderTop: '1px solid #5a3a3a' }}>
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', minHeight: 520 }}>
-      <div style={{
-        padding: '110px 72px 110px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        borderRight: '1px dashed #6a4a4a',
-      }}>
-        <Overline dark>Hi, I'm Cordeelia</Overline>
-        <h2 style={{
-          fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: 44,
-          lineHeight: 1.18, letterSpacing: '-0.4px', color: '#ffffff',
-          margin: '18px 0 0', textWrap: 'pretty', maxWidth: 480,
-        }}>
-          Four crafts, <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f5a3a3', fontSize: 50 }}>one little studio.</span>
-        </h2>
-        <p style={{
-          fontFamily: 'var(--cc-font-sans)', fontSize: 15.5, lineHeight: 1.7,
-          color: '#f5c0c0', marginTop: 26, maxWidth: 460,
-        }}>
-          I started Cordy's Crafts at my kitchen table folding paper hearts.
-          Then candles. Then polymer clay. Then I started teaching all of it.
-          Now it's all under one roof — small-batch, hand-made, with love.
-        </p>
-        <div style={{ display: 'flex', gap: 40, marginTop: 40, flexWrap: 'wrap' }}>
-          {[
-            ['600+', 'pieces made by hand'],
-            ['4', 'crafts under one roof'],
-            ['7 yrs', 'making a happy mess'],
-          ].map(([v, l]) => (
-            <div key={l}>
-              <div style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, fontSize: 38, color: '#ffffff', lineHeight: 1 }}>{v}</div>
-              <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 12.5, color: '#d5a3a3', marginTop: 8, maxWidth: 160, lineHeight: 1.4 }}>{l}</div>
-            </div>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: 12, marginTop: 44 }}>
-          <Button variant="brand">Meet the maker <Icon name="arrowRight" size={15} stroke={1.8}/></Button>
-          <Button variant="ghostDark">See the studio</Button>
-        </div>
-      </div>
-      <div style={{ position: 'relative', overflow: 'hidden', background: '#4a3232', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+const About = ({ accent }) => {
+  const bp = useBreakpoint()
+  const isMobile = bp === 'mobile'
+  return (
+    <section id="about" style={{ background: '#3a2a2a', color: '#fce4e4', borderTop: '1px solid #5a3a3a' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.1fr', minHeight: isMobile ? 'auto' : 520 }}>
         <div style={{
-          width: 320, height: 320, borderRadius: '50%',
-          background: '#fce4e4', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 0 0 8px rgba(252,228,228,0.15)',
+          padding: isMobile ? '60px 24px' : '110px 72px 110px 80px',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          borderRight: isMobile ? 'none' : '1px dashed #6a4a4a',
         }}>
-          <HeartMark size={200} color="#f08a8a"/>
+          <Overline dark>Hi, I'm Cordeelia</Overline>
+          <h2 style={{
+            fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: isMobile ? 36 : 44,
+            lineHeight: 1.18, letterSpacing: '-0.4px', color: '#ffffff',
+            margin: '18px 0 0', textWrap: 'pretty', maxWidth: 480,
+          }}>
+            Four crafts, <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f5a3a3', fontSize: isMobile ? 40 : 50 }}>one little studio.</span>
+          </h2>
+          <p style={{
+            fontFamily: 'var(--cc-font-sans)', fontSize: 15.5, lineHeight: 1.7,
+            color: '#f5c0c0', marginTop: 26, maxWidth: 460,
+          }}>
+            I started Cordy's Crafts at my kitchen table folding paper hearts.
+            Then candles. Then polymer clay. Then I started teaching all of it.
+            Now it's all under one roof — small-batch, hand-made, with love.
+          </p>
+          <div style={{ display: 'flex', gap: 40, marginTop: 40, flexWrap: 'wrap' }}>
+            {[
+              ['600+', 'pieces made by hand'],
+              ['4', 'crafts under one roof'],
+              ['7 yrs', 'making a happy mess'],
+            ].map(([v, l]) => (
+              <div key={l}>
+                <div style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, fontSize: 38, color: '#ffffff', lineHeight: 1 }}>{v}</div>
+                <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 12.5, color: '#d5a3a3', marginTop: 8, maxWidth: 160, lineHeight: 1.4 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'flex', gap: 12, marginTop: 44, flexWrap: 'wrap' }}>
+            <Button variant="brand">Meet the maker <Icon name="arrowRight" size={15} stroke={1.8}/></Button>
+            <Button variant="ghostDark">See the studio</Button>
+          </div>
         </div>
-        <div style={{ position: 'absolute', right: '8%', top: '20%' }}>
-          <CircleBadge color="ivory" size={92} style={{ flexDirection: 'column', lineHeight: 1, color: '#f08a8a' }}>
-            <span style={{ fontSize: 10, letterSpacing: 1.6, textTransform: 'uppercase', fontFamily: 'var(--cc-font-sans)', fontWeight: 600 }}>Made by</span>
-            <span style={{ fontFamily: 'var(--cc-font-script)', fontSize: 24, marginTop: 4 }}>Cordeelia</span>
-          </CircleBadge>
-        </div>
+        {!isMobile && (
+          <div style={{ position: 'relative', overflow: 'hidden', background: '#4a3232', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{
+              width: 320, height: 320, borderRadius: '50%',
+              background: '#fce4e4', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 0 0 8px rgba(252,228,228,0.15)',
+            }}>
+              <HeartMark size={200} color="#f08a8a"/>
+            </div>
+            <div style={{ position: 'absolute', right: '8%', top: '20%' }}>
+              <CircleBadge color="ivory" size={92} style={{ flexDirection: 'column', lineHeight: 1, color: '#f08a8a' }}>
+                <span style={{ fontSize: 10, letterSpacing: 1.6, textTransform: 'uppercase', fontFamily: 'var(--cc-font-sans)', fontWeight: 600 }}>Made by</span>
+                <span style={{ fontFamily: 'var(--cc-font-script)', fontSize: 24, marginTop: 4 }}>Cordeelia</span>
+              </CircleBadge>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  )
+};
 
 const Newsletter = ({ accent }) => {
+  const bp = useBreakpoint()
+  const isMobile = bp === 'mobile'
   const [email, setEmail] = React.useState('');
   const [done, setDone] = React.useState(false);
   const submit = (e) => { e.preventDefault(); if (email) { setDone(true); setEmail(''); } };
   return (
-    <section style={{ background: '#fce4e4', padding: '112px 40px' }}>
+    <section style={{ background: '#fce4e4', padding: isMobile ? '72px 24px' : '112px 40px' }}>
       <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -85,16 +95,16 @@ const Newsletter = ({ accent }) => {
           </span>
         </div>
         <h2 style={{
-          fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: 46,
+          fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: isMobile ? 34 : 46,
           lineHeight: 1.15, letterSpacing: '-0.4px', color: '#3a2a2a',
           margin: 0, textWrap: 'balance',
         }}>
           New batches, class openings, and the occasional <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f08a8a' }}>love note.</span>
         </h2>
-        <p style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 16, lineHeight: 1.6, color: '#7a5a5a', marginTop: 18, maxWidth: 520, marginLeft: 'auto', marginRight: 'auto' }}>
+        <p style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 15, lineHeight: 1.6, color: '#7a5a5a', marginTop: 18, maxWidth: 520, marginLeft: 'auto', marginRight: 'auto' }}>
           One letter a month. New drops first. Small discount codes. No filler.
         </p>
-        <form onSubmit={submit} style={{ display: 'flex', gap: 8, marginTop: 36, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
+        <form onSubmit={submit} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 8, marginTop: 36, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
           <input type="email" placeholder="your@email.com" value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{
@@ -114,6 +124,9 @@ const Newsletter = ({ accent }) => {
 };
 
 const InstagramStrip = () => {
+  const bp = useBreakpoint()
+  const isMobile = bp === 'mobile'
+  const cols = isMobile ? 2 : bp === 'tablet' ? 3 : 5
   const tiles = [
     { img: '/assets/ig-yarn-1.svg', cap: 'Today\'s pour · Rose & Pepper' },
     { img: '/assets/ig-yarn-2.svg', cap: 'Charms drying overnight' },
@@ -122,15 +135,15 @@ const InstagramStrip = () => {
     { img: '/assets/ig-yarn-5.svg', cap: 'The whole kit · workbench' },
   ];
   return (
-    <section style={{ background: '#3a2a2a', padding: '72px 0 80px', color: '#fce4e4' }}>
+    <section style={{ background: '#3a2a2a', padding: isMobile ? '56px 0 64px' : '72px 0 80px', color: '#fce4e4' }}>
       <div style={{
-        maxWidth: 1280, margin: '0 auto 40px', padding: '0 40px',
+        maxWidth: 1280, margin: '0 auto 40px', padding: isMobile ? '0 20px' : '0 40px',
         display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap',
       }}>
         <div>
           <Overline dark>@cordyscrafts</Overline>
-          <h3 style={{ fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: 32, margin: '12px 0 0', color: '#ffffff', letterSpacing: '-0.3px' }}>
-            From the studio, <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f5a3a3', fontSize: 38 }}>this week.</span>
+          <h3 style={{ fontFamily: 'var(--cc-font-serif)', fontWeight: 500, fontSize: isMobile ? 26 : 32, margin: '12px 0 0', color: '#ffffff', letterSpacing: '-0.3px' }}>
+            From the studio, <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f5a3a3', fontSize: isMobile ? 30 : 38 }}>this week.</span>
           </h3>
         </div>
         <a href="#" style={{
@@ -141,7 +154,7 @@ const InstagramStrip = () => {
           <Icon name="instagram" size={15} stroke={1.6}/> Follow along
         </a>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 2 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 2 }}>
         {tiles.map((t, i) => (
           <a key={i} href="#" style={{ position: 'relative', display: 'block', aspectRatio: '1 / 1', overflow: 'hidden', background: '#4a3232' }}>
             <img src={t.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'sepia(0.15) saturate(1.1) hue-rotate(-10deg)' }}/>
@@ -153,39 +166,44 @@ const InstagramStrip = () => {
   );
 };
 
-const Footer = () => (
-  <footer style={{ background: '#fffafa', padding: '80px 40px 36px', borderTop: '1px dashed #f5c0c0' }}>
-    <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: 48 }}>
-      <div>
-        <Logo size={20}/>
-        <p style={{ fontFamily: 'var(--cc-font-serif)', fontSize: 16, lineHeight: 1.6, color: '#7a5a5a', marginTop: 18, maxWidth: 320 }}>
-          Hand-made paper, clay, candles, and small-group classes — shipped with a handwritten note.
-        </p>
-        <div style={{ display: 'flex', gap: 14, marginTop: 22, color: '#a85050' }}>
-          <Icon name="instagram" size={18}/>
-          <Icon name="mail" size={18}/>
-          <Icon name="heart" size={18}/>
+const Footer = () => {
+  const bp = useBreakpoint()
+  const isMobile = bp === 'mobile'
+  const gridCols = isMobile ? '1fr' : bp === 'tablet' ? '1fr 1fr' : '1.5fr 1fr 1fr 1fr'
+  return (
+    <footer style={{ background: '#fffafa', padding: isMobile ? '48px 24px 28px' : '80px 40px 36px', borderTop: '1px dashed #f5c0c0' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: gridCols, gap: isMobile ? 36 : 48 }}>
+        <div>
+          <Logo size={20}/>
+          <p style={{ fontFamily: 'var(--cc-font-serif)', fontSize: 16, lineHeight: 1.6, color: '#7a5a5a', marginTop: 18, maxWidth: 320 }}>
+            Hand-made paper, clay, candles, and small-group classes — shipped with a handwritten note.
+          </p>
+          <div style={{ display: 'flex', gap: 14, marginTop: 22, color: '#a85050' }}>
+            <Icon name="instagram" size={18}/>
+            <Icon name="mail" size={18}/>
+            <Icon name="heart" size={18}/>
+          </div>
         </div>
+        {[
+          ['Shop', ['Paper Crafts', 'Clay', 'Candles', 'Bundles', 'Gift cards']],
+          ['Studio', ['About Cordeelia', 'Classes & Events', 'The process', 'Commissions']],
+          ['Help', ['Order via WhatsApp', 'Shipping', 'Returns', 'Care guide', 'FAQ']],
+        ].map(([heading, items]) => (
+          <div key={heading}>
+            <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 11, fontWeight: 500, letterSpacing: 1.4, textTransform: 'uppercase', color: '#a85050', marginBottom: 16 }}>{heading}</div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {items.map(x => <li key={x}><a href="#" style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, color: '#7a5a5a', textDecoration: 'none' }}>{x}</a></li>)}
+            </ul>
+          </div>
+        ))}
       </div>
-      {[
-        ['Shop', ['Paper Crafts', 'Clay', 'Candles', 'Bundles', 'Gift cards']],
-        ['Studio', ['About Cordeelia', 'Classes & Events', 'The process', 'Commissions']],
-        ['Help', ['Order via WhatsApp', 'Shipping', 'Returns', 'Care guide', 'FAQ']],
-      ].map(([heading, items]) => (
-        <div key={heading}>
-          <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 11, fontWeight: 500, letterSpacing: 1.4, textTransform: 'uppercase', color: '#a85050', marginBottom: 16 }}>{heading}</div>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {items.map(x => <li key={x}><a href="#" style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, color: '#7a5a5a', textDecoration: 'none' }}>{x}</a></li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-    <div style={{ maxWidth: 1280, margin: '56px auto 0', paddingTop: 24, borderTop: '1px dashed #f5c0c0', display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--cc-font-sans)', fontSize: 13, color: '#a85050', flexWrap: 'wrap', gap: 12 }}>
-      <span>© 2026 Cordy's Crafts · Made with love</span>
-      <span style={{ fontFamily: 'var(--cc-font-script)', fontSize: 18, color: '#f08a8a' }}>since 2019 ♡</span>
-    </div>
-  </footer>
-);
+      <div style={{ maxWidth: 1280, margin: isMobile ? '36px auto 0' : '56px auto 0', paddingTop: 24, borderTop: '1px dashed #f5c0c0', display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--cc-font-sans)', fontSize: 13, color: '#a85050', flexWrap: 'wrap', gap: 12 }}>
+        <span>© 2026 Cordy's Crafts · Made with love</span>
+        <span style={{ fontFamily: 'var(--cc-font-script)', fontSize: 18, color: '#f08a8a' }}>since 2019 ♡</span>
+      </div>
+    </footer>
+  )
+};
 
 // ============== WhatsApp Icon ==============
 const WhatsAppIcon = ({ size = 18 }) => (
