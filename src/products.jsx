@@ -4,9 +4,13 @@ import { useCartContext } from './CartContext.jsx'
 import { Icon, CircleBadge, Overline, Button } from './primitives.jsx'
 import { useProducts } from './hooks/useProducts.js'
 import { useClasses } from './hooks/useClasses.js'
+import { useBreakpoint } from './hooks/useBreakpoint.js'
 
 // ======== Currency =========
 const inr = (n) => '₹' + n.toLocaleString('en-IN');
+
+const PRODUCT_COLS = { mobile: 2, tablet: 3, desktop: 4 }
+const CLASS_COLS   = { mobile: 1, tablet: 2, desktop: 2 }
 
 // ======== Product card =========
 const ProductCard = ({ p, accent }) => {
