@@ -84,7 +84,26 @@ const ProductCard = ({ p, accent }) => {
 const ProductGrid = ({ accent }) => {
   const { products, loading } = useProducts();
   const [filter, setFilter] = React.useState('All');
-  if (loading) return null;
+  const bp = useBreakpoint()
+  const cols = PRODUCT_COLS[bp]
+  if (loading) {
+    return (
+      <section id="shop" style={{ background: '#fffafa', padding: '120px 40px' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} style={{
+                borderRadius: 12, overflow: 'hidden', height: 280,
+                background: 'linear-gradient(90deg, #f5e8dc 25%, #fff8f3 50%, #f5e8dc 75%)',
+                backgroundSize: '800px 100%',
+                animation: 'shimmer 1.4s infinite linear',
+              }}/>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
   const cats = ['All', 'Paper Crafts', 'Clay', 'Candles'];
   const items = filter === 'All' ? products : products.filter(p => p.category === filter);
   return (
@@ -118,7 +137,7 @@ const ProductGrid = ({ accent }) => {
             ))}
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
           {items.map(p => <ProductCard key={p.sku} p={p} accent={accent}/>)}
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 56 }}>
