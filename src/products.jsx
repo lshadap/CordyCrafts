@@ -208,7 +208,26 @@ const ClassCard = ({ k, accent, onBook }) => {
 const ClassesGrid = ({ accent, onBook }) => {
   const { classes, loading } = useClasses();
   const [filter, setFilter] = React.useState('All');
-  if (loading) return null;
+  const bp = useBreakpoint()
+  const cols = CLASS_COLS[bp]
+  if (loading) {
+    return (
+      <section id="classes" style={{ background: '#fce4e4', padding: '120px 40px' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} style={{
+                borderRadius: 12, overflow: 'hidden', height: 320,
+                background: 'linear-gradient(90deg, #f5e8dc 25%, #fff8f3 50%, #f5e8dc 75%)',
+                backgroundSize: '800px 100%',
+                animation: 'shimmer 1.4s infinite linear',
+              }}/>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
   const filters = ['All', 'Paper Crafts', 'Clay', 'Candles', 'Online', 'Offline'];
   const items = classes.filter(k =>
     filter === 'All' ? true :
@@ -251,7 +270,7 @@ const ClassesGrid = ({ accent, onBook }) => {
             ))}
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 20 }}>
           {items.map(k => <ClassCard key={k.id} k={k} accent={accent} onBook={onBook}/>)}
         </div>
       </div>
