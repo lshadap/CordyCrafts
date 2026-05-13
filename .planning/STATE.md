@@ -68,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-13
-Stopped at: Phase 3 UAT complete — ready to plan Phase 4
-Resume file: .planning/phases/04-vercel-deploy/ (not yet planned)
+Stopped at: Phase 4 context gathered — ready to plan
+Resume file: .planning/phases/04-vercel-deploy/04-CONTEXT.md
