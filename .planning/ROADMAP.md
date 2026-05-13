@@ -127,7 +127,7 @@ Plans:
 Plans:
 
 **Wave 1** *(autonomous — code work)*:
-- [ ] 04-01-PLAN.md — README.md with local setup, env var reference, tech stack, project structure
+- [x] 04-01-PLAN.md — README.md with local setup, env var reference, tech stack, project structure
 
 **Wave 2** *(blocked on Wave 1, manual user steps)*:
 - [ ] 04-02-PLAN.md — Vercel: import GitHub repo → set project name `cordyscrafts` → set 3 env vars → first deploy
@@ -152,4 +152,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Vite Scaffold | 7/7 | Complete | 2026-05-07 |
 | 2. Supabase Integration | 4/4 | Complete | 2026-05-07 |
 | 3. Mobile Polish | 3/3 | Complete | 2026-05-08 |
-| 4. Vercel Deploy | 0/3 | Not started | - |
+| 4. Vercel Deploy | 1/3 | In progress | - |
