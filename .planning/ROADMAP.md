@@ -123,7 +123,24 @@ Plans:
   2. Navigating directly to a deep route (e.g., /products) in the browser returns the app, not a 404
   3. On the production URL: cart persists across page refresh, and WhatsApp order and booking links open correctly on an Android device and an iOS device
   4. A new developer can clone the repo, follow README instructions, and run the site locally without asking Cordeelia for anything beyond the env var values
-**Plans**: TBD
+**Plans**: 3 plans across 3 waves
+Plans:
+
+**Wave 1** *(autonomous — code work)*:
+- [ ] 04-01-PLAN.md — README.md with local setup, env var reference, tech stack, project structure
+
+**Wave 2** *(blocked on Wave 1, manual user steps)*:
+- [ ] 04-02-PLAN.md — Vercel: import GitHub repo → set project name `cordyscrafts` → set 3 env vars → first deploy
+
+**Wave 3** *(blocked on Wave 2, manual production verification)*:
+- [ ] 04-03-PLAN.md — Production verification: SPA routing, cart persistence, WhatsApp links on Android + iOS
+
+**Cross-cutting constraints:**
+- Production URL: `https://cordyscrafts.vercel.app` — no custom domain (D-01)
+- Vercel project name must be exactly `cordyscrafts` (D-02) — og:image URL depends on this
+- README covers local dev only — no Vercel setup or Supabase migration steps (D-06, D-07)
+- All 3 env vars must be set in Vercel before first build: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_WHATSAPP_NUMBER (D-04)
+**UI hint**: no
 
 ## Progress
 
@@ -135,4 +152,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Vite Scaffold | 7/7 | Complete | 2026-05-07 |
 | 2. Supabase Integration | 4/4 | Complete | 2026-05-07 |
 | 3. Mobile Polish | 3/3 | Complete | 2026-05-08 |
-| 4. Vercel Deploy | 0/? | Not started | - |
+| 4. Vercel Deploy | 0/3 | Not started | - |
