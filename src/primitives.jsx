@@ -48,17 +48,9 @@ const HeartMark = ({ size = 36, color = '#f08a8a' }) => (
   </svg>
 );
 
-const Logo = ({ dark = false, size = 22 }) => (
-  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, color: dark ? '#faf9f5' : '#3a2a2a' }}>
-    <HeartMark size={size + 14} color="#f08a8a"/>
-    <span style={{
-      fontFamily: "var(--cc-font-script)", fontWeight: 400,
-      fontSize: size + 4, color: '#f08a8a', lineHeight: 1, letterSpacing: '0.2px',
-      paddingTop: 4,
-    }}>
-      Cordy's Crafts
-    </span>
-  </span>
+const Logo = ({ size = 22 }) => (
+  <img src="/assets/cordys-logo.png" alt="Cordy's Crafts"
+    style={{ height: size + 16, width: 'auto', display: 'block' }} />
 );
 
 const Button = ({ variant = 'brand', children, onClick, full = false, size = 'md', as = 'button', href }) => {
