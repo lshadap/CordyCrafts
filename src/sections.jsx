@@ -284,7 +284,7 @@ const CartDrawer = ({ open, onClose, accent }) => {
     // INSERT succeeded → build WhatsApp message and open it
     const msg = buildOrderMessage(form, itemsSnapshot, totalForInsert);
     const waUrl = buildWaUrl(msg);
-    window.open(waUrl, '_blank');
+    window.location.href = waUrl;
 
     setConfirmation({ ...form, total: totalForInsert, items: itemsSnapshot });
     setStage('done');
@@ -498,7 +498,7 @@ const BookingModal = ({ klass, onClose, accent }) => {
 
     const msg = buildBookingMessage(form, klass);
     const waUrl = buildWaUrl(msg);
-    window.open(waUrl, '_blank');
+    window.location.href = waUrl;
 
     setStage('done');
     setSubmitting(false);
