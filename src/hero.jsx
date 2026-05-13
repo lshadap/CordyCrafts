@@ -28,7 +28,9 @@ const Nav = ({ accent, cartCount, onOpenCart }) => {
         gridTemplateColumns: isMobile ? '1fr auto' : '1fr auto 1fr',
         alignItems: 'center', gap: isMobile ? 12 : 32,
       }}>
-        <Logo size={20} />
+        <a href="#" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} style={{ textDecoration: 'none', display: 'inline-flex' }}>
+          <Logo size={20} />
+        </a>
         {!isMobile && (
           <div style={{ display: 'flex', gap: 28, alignItems: 'center', fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, justifySelf: 'center' }}>
             {links.map((x, i) => (
