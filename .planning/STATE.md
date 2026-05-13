@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-05-06)
 
 **Core value:** A customer on a phone can browse the full catalogue, add items to cart, and place an order that lands in Cordeelia's WhatsApp — all in under a minute.
-**Current focus:** Phase 4 — Vercel Deploy
+**Current focus:** Complete — all 4 phases shipped
 
 ## Current Position
 
 Phase: 4 of 4 (Vercel Deploy)
-Plan: 1 of 3 in current phase
-Status: Executing (Wave 2 — human-action checkpoint)
-Last activity: 2026-05-13 — Plan 04-01 complete (README.md written)
+Plan: 3 of 3 in current phase
+Status: Complete
+Last activity: 2026-05-13 — Plan 04-03 complete (production verified, iOS WhatsApp fix deployed)
 
-Progress: [██████████] Phase 1 100% · [██████████] Phase 2 100% · [██████████] Phase 3 100% · [░░░░░░░░░░] Phase 4 0% · Overall 75%
+Progress: [██████████] Phase 1 100% · [██████████] Phase 2 100% · [██████████] Phase 3 100% · [██████████] Phase 4 100% · Overall 100%
 
 ## Performance Metrics
 
@@ -68,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-13
-Stopped at: Phase 4 planned — 3 plans ready, ready to execute
-Resume file: .planning/phases/04-vercel-deploy/04-01-PLAN.md
+Stopped at: Project complete — all 4 phases shipped, site live at https://cordyscrafts.vercel.app
+Resume file: n/a
