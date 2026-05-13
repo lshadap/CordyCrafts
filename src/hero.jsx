@@ -137,8 +137,8 @@ const Hero = ({ headline, sub, accent }) => {
             color: '#7a5a5a', marginTop: 28, maxWidth: 420,
           }}>{sub}</p>
           <div style={{ display: 'flex', gap: 12, marginTop: 36, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Button variant="brand" size="lg">Shop the collection <Icon name="arrowRight" size={16} stroke={1.8}/></Button>
-            <a href="#" style={{
+            <Button variant="brand" size="lg" onClick={() => document.getElementById('shop')?.scrollIntoView({behavior:'smooth'})}>Shop the collection <Icon name="arrowRight" size={16} stroke={1.8}/></Button>
+            <a href="#about" style={{
               fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, color: '#3a2a2a',
               textDecoration: 'underline', textUnderlineOffset: 4, textDecorationColor: '#f5c0c0',
             }}>Read our story →</a>
@@ -208,8 +208,8 @@ const Hero = ({ headline, sub, accent }) => {
   )
 }
 
-const CategoryTile = ({ label, sub, img, accent, badge, script }) => (
-  <a href="#" style={{
+const CategoryTile = ({ label, sub, img, accent, badge, href = '#' }) => (
+  <a href={href} style={{
     position: 'relative', display: 'block', textDecoration: 'none',
     background: '#fce4e4', overflow: 'hidden', minHeight: 320,
     borderRight: '1px dashed #f5a3a3',
@@ -262,10 +262,10 @@ const Categories = ({ accent }) => {
       display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`,
       background: '#fffafa', borderTop: '1px solid #f5d3d3',
     }}>
-      <CategoryTile label="Paper Crafts" sub="Cards · Quilling · Iris folding" img="/assets/category-amigurumi.svg" accent={accent} badge="24" />
-      <CategoryTile label="Clay" sub="Air-dry · Polymer charms" img="/assets/category-bags.svg" accent={accent} />
-      <CategoryTile label="Candles" sub="Soy · Beeswax · Hand poured" img="/assets/category-wearables.svg" accent={accent} badge="New" />
-      <CategoryTile label="Classes & Events" sub="Online · Offline · Workshops" img="/assets/category-classes.svg" accent={accent} badge="Book" />
+      <CategoryTile label="Paper Crafts" sub="Cards · Quilling · Iris folding" img="/assets/category-amigurumi.svg" accent={accent} badge="24" href="#shop" />
+      <CategoryTile label="Clay" sub="Air-dry · Polymer charms" img="/assets/category-bags.svg" accent={accent} href="#shop" />
+      <CategoryTile label="Candles" sub="Soy · Beeswax · Hand poured" img="/assets/category-wearables.svg" accent={accent} badge="New" href="#shop" />
+      <CategoryTile label="Classes & Events" sub="Online · Offline · Workshops" img="/assets/category-classes.svg" accent={accent} badge="Book" href="#classes" />
     </section>
   )
 }

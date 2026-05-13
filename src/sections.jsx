@@ -47,8 +47,8 @@ const About = ({ accent }) => {
             ))}
           </div>
           <div style={{ display: 'flex', gap: 12, marginTop: 44, flexWrap: 'wrap' }}>
-            <Button variant="brand">Meet the maker <Icon name="arrowRight" size={15} stroke={1.8}/></Button>
-            <Button variant="ghostDark">See the studio</Button>
+            <Button as="a" href="/process" variant="brand">Meet the maker <Icon name="arrowRight" size={15} stroke={1.8}/></Button>
+            <Button as="a" href="https://instagram.com/cordyscrafts" variant="ghostDark">See the studio</Button>
           </div>
         </div>
         {!isMobile && (
@@ -146,7 +146,7 @@ const InstagramStrip = () => {
             From the studio, <span style={{ fontFamily: 'var(--cc-font-script)', fontWeight: 400, color: '#f5a3a3', fontSize: isMobile ? 30 : 38 }}>this week.</span>
           </h3>
         </div>
-        <a href="#" style={{
+        <a href="https://instagram.com/cordyscrafts" target="_blank" rel="noopener noreferrer" style={{
           fontFamily: 'var(--cc-font-sans)', fontSize: 14, color: '#f5c0c0',
           textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10,
           padding: '10px 18px', borderRadius: 999, boxShadow: '0 0 0 1px #5a3a3a',
@@ -156,7 +156,7 @@ const InstagramStrip = () => {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 2 }}>
         {tiles.map((t, i) => (
-          <a key={i} href="#" style={{ position: 'relative', display: 'block', aspectRatio: '1 / 1', overflow: 'hidden', background: '#4a3232' }}>
+          <a key={i} href="https://instagram.com/cordyscrafts" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', display: 'block', aspectRatio: '1 / 1', overflow: 'hidden', background: '#4a3232' }}>
             <img src={t.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'sepia(0.15) saturate(1.1) hue-rotate(-10deg)' }}/>
             <div style={{ position: 'absolute', left: 14, bottom: 12, right: 14, fontFamily: 'var(--cc-font-sans)', fontSize: 11, letterSpacing: 0.3, color: '#fce4e4' }}>{t.cap}</div>
           </a>
@@ -179,20 +179,35 @@ const Footer = () => {
             Hand-made paper, clay, candles, and small-group classes — shipped with a handwritten note.
           </p>
           <div style={{ display: 'flex', gap: 14, marginTop: 22, color: '#a85050' }}>
-            <Icon name="instagram" size={18}/>
+            <a href="https://instagram.com/cordyscrafts" target="_blank" rel="noopener noreferrer" style={{ color: '#a85050' }}><Icon name="instagram" size={18}/></a>
             <Icon name="mail" size={18}/>
             <Icon name="heart" size={18}/>
           </div>
         </div>
         {[
-          ['Shop', ['Paper Crafts', 'Clay', 'Candles', 'Bundles', 'Gift cards']],
-          ['Studio', ['About Cordeelia', 'Classes & Events', 'The process', 'Commissions']],
-          ['Help', ['Order via WhatsApp', 'Shipping', 'Returns', 'Care guide', 'FAQ']],
+          ['Shop', [
+            { label: 'Paper Crafts', href: '#shop' },
+            { label: 'Clay',         href: '#shop' },
+            { label: 'Candles',      href: '#shop' },
+          ]],
+          ['Studio', [
+            { label: 'About Cordeelia',  href: '#about' },
+            { label: 'Classes & Events', href: '#classes' },
+            { label: 'The process',      href: '/process' },
+            { label: 'Commissions',      href: '/commissions' },
+          ]],
+          ['Help', [
+            { label: 'Order via WhatsApp', href: `https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER}` },
+            { label: 'Shipping',   href: '/shipping' },
+            { label: 'Returns',    href: '/returns' },
+            { label: 'Care guide', href: '/care-guide' },
+            { label: 'FAQ',        href: '/faq' },
+          ]],
         ].map(([heading, items]) => (
           <div key={heading}>
             <div style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 11, fontWeight: 500, letterSpacing: 1.4, textTransform: 'uppercase', color: '#a85050', marginBottom: 16 }}>{heading}</div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {items.map(x => <li key={x}><a href="#" style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, color: '#7a5a5a', textDecoration: 'none' }}>{x}</a></li>)}
+              {items.map(x => <li key={x.label}><a href={x.href} style={{ fontFamily: 'var(--cc-font-sans)', fontSize: 14.5, color: '#7a5a5a', textDecoration: 'none' }}>{x.label}</a></li>)}
             </ul>
           </div>
         ))}
