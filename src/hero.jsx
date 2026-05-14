@@ -91,9 +91,9 @@ const Nav = ({ accent, cartCount, onOpenCart }) => {
 }
 
 const HERO_SLIDES = [
-  { img: '/assets/hero-1.jpg', label: 'The Heart Trio' },
-  { img: '/assets/hero-2.jpg', label: 'Spring Candle Pour' },
-  { img: '/assets/hero-3.jpg', label: 'Clay Charms' },
+  { img: '/assets/hero-1.jpg', label: 'Hand-Poured Candles' },
+  { img: '/assets/hero-2.jpg', label: 'Paper Quilling' },
+  { img: '/assets/hero-3.jpg', label: 'Clay Sculptures' },
 ]
 
 const Hero = ({ headline, sub, accent }) => {
