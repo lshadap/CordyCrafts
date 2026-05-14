@@ -90,9 +90,22 @@ const Nav = ({ accent, cartCount, onOpenCart }) => {
   )
 }
 
+const HERO_SLIDES = [
+  { img: '/assets/hero-1.jpg', label: 'The Heart Trio' },
+  { img: '/assets/hero-2.jpg', label: 'Spring Candle Pour' },
+  { img: '/assets/hero-3.jpg', label: 'Clay Charms' },
+]
+
 const Hero = ({ headline, sub, accent }) => {
   const bp = useBreakpoint()
   const isMobile = bp === 'mobile'
+  const [slide, setSlide] = React.useState(0)
+
+  React.useEffect(() => {
+    const id = setInterval(() => setSlide(s => (s + 1) % HERO_SLIDES.length), 4000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section style={{ background: '#fffafa', borderBottom: '1px solid #f5d3d3' }}>
       <div style={{
@@ -159,17 +172,23 @@ const Hero = ({ headline, sub, accent }) => {
             </div>
           )}
         </div>
-        {/* RIGHT — hero image (desktop only) */}
-        {!isMobile && (
-          <div style={{ position: 'relative', background: '#fce4e4', overflow: 'hidden' }}>
+
+        {/* IMAGE PANEL — rotating slider, desktop right column / mobile full-width strip */}
+        <div style={{
+          position: 'relative', background: '#fce4e4', overflow: 'hidden',
+          height: isMobile ? 280 : 'auto',
+        }}>
+          {/* Dashed border (desktop only) */}
+          {!isMobile && (
             <div style={{
               position: 'absolute', inset: 24, border: '1.5px dashed #f5a3a3',
-              borderRadius: 24, pointerEvents: 'none',
+              borderRadius: 24, pointerEvents: 'none', zIndex: 3,
             }}/>
-            <div style={{
-              position: 'absolute', top: '38%', right: '12%', zIndex: 2,
-              transform: 'translateY(-50%)',
-            }}>
+          )}
+
+          {/* Badge (desktop only) */}
+          {!isMobile && (
+            <div style={{ position: 'absolute', top: '38%', right: '12%', zIndex: 2, transform: 'translateY(-50%)' }}>
               <CircleBadge color="coral" size={86} style={{
                 background: accent, flexDirection: 'column', gap: 0, lineHeight: 1,
                 fontFamily: 'var(--cc-font-script)', boxShadow: '0 8px 22px rgba(240,138,138,0.35)',
@@ -178,19 +197,36 @@ const Hero = ({ headline, sub, accent }) => {
                 <span style={{ fontSize: 30, marginTop: 2 }}>20%</span>
               </CircleBadge>
             </div>
-            <img src="/assets/hero-fox.svg" alt="Cordy's Crafts featured piece"
-              style={{ width: '78%', height: '100%', objectFit: 'contain', margin: '0 auto', display: 'block', position: 'relative', zIndex: 1 }}/>
+          )}
+
+          {/* Slides with crossfade */}
+          {HERO_SLIDES.map((s, i) => (
+            <img key={i} src={s.img} alt="Cordy's Crafts featured piece"
+              style={{
+                position: 'absolute',
+                width: isMobile ? '100%' : '78%',
+                height: '100%',
+                objectFit: isMobile ? 'cover' : 'contain',
+                left: 0, right: 0, margin: '0 auto',
+                zIndex: 1,
+                opacity: i === slide ? 1 : 0,
+                transition: 'opacity 700ms ease',
+              }}/>
+          ))}
+
+          {/* Desktop sidebar — label + counter */}
+          {!isMobile && (
             <div style={{
               position: 'absolute', right: 0, top: 0, bottom: 0, width: 54,
               background: '#f08a8a', display: 'flex', flexDirection: 'column',
-              alignItems: 'center', justifyContent: 'space-between', padding: '28px 0',
+              alignItems: 'center', justifyContent: 'space-between', padding: '28px 0', zIndex: 4,
             }}>
               <div style={{
                 fontFamily: 'var(--cc-font-sans)', fontSize: 10.5, letterSpacing: 1.8,
                 textTransform: 'uppercase', color: '#fce4e4',
                 writingMode: 'vertical-rl', transform: 'rotate(180deg)',
               }}>
-                Featured · The Heart Trio
+                Featured · {HERO_SLIDES[slide].label}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, color: '#fce4e4' }}>
                 <Icon name="instagram" size={16} stroke={1.5}/>
@@ -198,11 +234,28 @@ const Hero = ({ headline, sub, accent }) => {
                 <span style={{
                   fontFamily: 'var(--cc-font-script)', fontSize: 16, color: '#ffffff',
                   writingMode: 'vertical-rl', transform: 'rotate(180deg)',
-                }}>01 / 03</span>
+                }}>{String(slide + 1).padStart(2, '0')} / {String(HERO_SLIDES.length).padStart(2, '0')}</span>
               </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Mobile dots */}
+          {isMobile && (
+            <div style={{
+              position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)',
+              display: 'flex', gap: 8, zIndex: 2,
+            }}>
+              {HERO_SLIDES.map((_, i) => (
+                <button key={i} onClick={() => setSlide(i)} style={{
+                  width: i === slide ? 20 : 8, height: 8, borderRadius: 999,
+                  background: i === slide ? '#f08a8a' : 'rgba(255,255,255,0.7)',
+                  border: 'none', padding: 0, cursor: 'pointer',
+                  transition: 'all 300ms ease',
+                }}/>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

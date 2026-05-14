@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff5f5"></stop>
+      <stop offset="100%" stop-color="#fce4e4"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#glow)"></rect>
+  <ellipse cx="300" cy="600" rx="220" ry="18" fill="#f5a3a3" opacity="0.4"></ellipse>
+
+  
+
+  
+  <g transform="translate(140, 380)">
+    <rect x="-50" y="0" width="100" height="140" rx="8" fill="#ffffff" stroke="#f5a3a3" stroke-width="1.5"></rect>
+    <ellipse cx="0" cy="0" rx="50" ry="10" fill="#fce4e4" stroke="#f5a3a3" stroke-width="1.5"></ellipse>
+    <ellipse cx="0" cy="140" rx="50" ry="10" fill="#f5d3d3" stroke="#f5a3a3" stroke-width="1.5"></ellipse>
+    
+    <ellipse cx="0" cy="20" rx="46" ry="7" fill="#fce4e4"></ellipse>
+    
+    <line x1="0" y1="20" x2="0" y2="-12" stroke="#3a2a2a" stroke-width="1.5"></line>
+    
+    <path d="M-6 -12 Q 0 -32 6 -12 Q 4 -4 0 -2 Q -4 -4 -6 -12 Z" fill="#f08a8a"></path>
+    <path d="M-3 -10 Q 0 -22 3 -10 Q 2 -5 0 -4 Q -2 -5 -3 -10 Z" fill="#fce4e4"></path>
+    
+    <rect x="-30" y="60" width="60" height="40" rx="3" fill="#fce4e4" stroke="#f08a8a" stroke-width="0.8" stroke-dasharray="2 2"></rect>
+    <text x="0" y="83" text-anchor="middle" font-family="cursive" font-size="14" fill="#f08a8a" font-style="italic">Cordy&#39;s</text>
+  </g>
+
+  
+  <g transform="translate(300, 240)">
+    
+    <path d="M0 130 C -55 90, -75 50, -55 30 C -38 14, -15 26, 0 50 C 15 26, 38 14, 55 30 C 75 50, 55 90, 0 130 Z" fill="#f08a8a" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 3"></path>
+    
+    <g stroke="#ffffff" stroke-width="3.5" fill="none" stroke-linecap="round">
+      <path d="M-22 60 a8 8 0 1 1 -4 -7 a12 12 0 1 1 4 14"></path>
+      <path d="M22 60 a8 8 0 1 0 4 -7 a12 12 0 1 0 -4 14"></path>
+      <path d="M0 90 a7 7 0 1 1 -4 -6 a10 10 0 1 1 4 12"></path>
+    </g>
+    
+    <g transform="translate(54 6)" stroke="#f08a8a" stroke-width="1.6" fill="#ffffff">
+      <circle cx="3" cy="3" r="3"></circle>
+      <circle cx="11" cy="3" r="3"></circle>
+      <path d="M5.5 5.5 L 16 16 M 8.5 5.5 L -2 16" stroke="#f08a8a" stroke-width="1.8"></path>
+    </g>
+  </g>
+
+  
+  <g transform="translate(460, 410)">
+    
+    <g>
+      <circle cx="0" cy="0" r="32" fill="#fce4e4" stroke="#f08a8a" stroke-width="1.5"></circle>
+      <g fill="#ffffff" stroke="#f5a3a3" stroke-width="1">
+        <ellipse cx="0" cy="-22" rx="8" ry="14"></ellipse>
+        <ellipse cx="22" cy="0" rx="14" ry="8"></ellipse>
+        <ellipse cx="0" cy="22" rx="8" ry="14"></ellipse>
+        <ellipse cx="-22" cy="0" rx="14" ry="8"></ellipse>
+        <ellipse cx="16" cy="-16" rx="10" ry="8" transform="rotate(-45 16 -16)"></ellipse>
+        <ellipse cx="-16" cy="-16" rx="10" ry="8" transform="rotate(45 -16 -16)"></ellipse>
+        <ellipse cx="16" cy="16" rx="10" ry="8" transform="rotate(45 16 16)"></ellipse>
+        <ellipse cx="-16" cy="16" rx="10" ry="8" transform="rotate(-45 -16 16)"></ellipse>
+      </g>
+      <circle cx="0" cy="0" r="8" fill="#f08a8a"></circle>
+    </g>
+    
+    <circle cx="0" cy="-42" r="5" fill="none" stroke="#b0aea5" stroke-width="1.5"></circle>
+    
+    <g transform="translate(-50, 60)">
+      <circle r="20" fill="#f08a8a"></circle>
+      <path d="M0 7 C -10 -1, -14 -8, -7 -12 C -3 -14, 0 -10, 0 -6 C 0 -10, 3 -14, 7 -12 C 14 -8, 10 -1, 0 7 Z" fill="#ffffff"></path>
+    </g>
+  </g>
+
+  
+  <g opacity="0.85">
+    <path d="M100 180 q10 -8 18 0 q-8 10 -18 0 Z" fill="#f08a8a"></path>
+    <path d="M500 160 q10 -8 18 0 q-8 10 -18 0 Z" fill="#f5a3a3"></path>
+    <path d="M80 280 q10 -8 18 0 q-8 10 -18 0 Z" fill="#fce4e4" stroke="#f5a3a3" stroke-width="0.6"></path>
+    <path d="M520 290 q10 -8 18 0 q-8 10 -18 0 Z" fill="#f08a8a" opacity="0.7"></path>
+    <path d="M150 600 q8 -6 14 0 q-6 8 -14 0 Z" fill="#f08a8a" opacity="0.6"></path>
+    <path d="M450 620 q8 -6 14 0 q-6 8 -14 0 Z" fill="#f5a3a3"></path>
+  </g>
+
+  
+  <g>
+    <path d="M120 660 Q 300 640 480 660" stroke="#f08a8a" stroke-width="2.5" fill="none" stroke-dasharray="4 3"></path>
+  </g>
+</svg>
